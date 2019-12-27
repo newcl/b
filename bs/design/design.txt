@@ -1,0 +1,38 @@
+Property
+An attribute of entity (e.g. position).
+
+Entity
+Representation of in game entity which are composition of properties.
+
+Action
+Function to change properties of entity.
+
+[PropertyChange] = action([Entity])
+
+Examples
+1. Player moves in direction p can be expressed as:
+[{id=1, [state = Moving]}] = move({id=1})
+
+2. Player1 attacks Player2
+[{id=1, [hp=+100]}, {id=2,[hp=-30]}] = attack({id=1}, {id=2})
+
+Server
+
+1 Subscription N Publication
+
+Read 1
+Write N
+
+Client
+Read 1
+Write SAME 1
+
+Server
+- Start
+- Subscribe @14000
+
+
+Client
+- Start
+- Publish to server@14000
+- Send join message with IP (included in the identity), Port (Where Subscription is created), Stream id

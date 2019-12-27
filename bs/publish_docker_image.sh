@@ -1,0 +1,1 @@
+docker push newcl/bs:latest

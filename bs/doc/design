@@ -1,0 +1,13 @@
+View
+    - ViewState
+DataStates
+    - DataState
+        - Position
+        - LinearSpeed
+        - Acceleration
+        - Direction
+        - AngularSpeed
+Action 
+    - Who
+    - On Who
+    - What (State change)

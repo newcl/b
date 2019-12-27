@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: bs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bs
+  template:
+    metadata:
+      labels:
+        app: bs
+    spec:
+      volumes:
+        - name: dshm
+          emptyDir:
+            medium: Memory
+      containers:
+      - name: bs
+        image: newcl/bs:latest
+        volumeMounts:
+          - mountPath: /dev/shm
+            name: dshm
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 30001
+          protocol: UDP
