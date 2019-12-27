@@ -1,0 +1,41 @@
+syntax = "proto3";
+option java_package = "info.chenliang.b.message";
+option java_multiple_files = true;
+
+/////////////////////////////////////////////////
+// Before game
+message Join {
+    int32 room = 1;
+    string user = 2;
+    int32 subPort = 3;
+    int32 subStreamId = 4;
+    string ip = 5;
+}
+
+message JoinResult {
+    int32 id = 1;
+}
+
+/////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////
+// In game
+message Position {
+    float x = 1;
+    float y = 2;
+}
+
+message MoveToPosition {
+    Position position = 1;
+}
+
+/////////////////////////////////////////////////
+
+message MessageWrapper {
+    oneof msg {
+        Join join = 1;
+        JoinResult joinResult = 2;
+        MoveToPosition action = 3;
+    }
+}
