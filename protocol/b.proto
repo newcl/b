@@ -30,6 +30,16 @@ message MoveToPosition {
     Position position = 1;
 }
 
+message Ping {
+    int64 time = 1;
+    string message = 2;
+}
+
+message Pong {
+    int64 time = 1;
+    string message = 2;
+}
+
 /////////////////////////////////////////////////
 
 message MessageWrapper {
@@ -37,5 +47,7 @@ message MessageWrapper {
         Join join = 1;
         JoinResult joinResult = 2;
         MoveToPosition action = 3;
+        Ping ping = 4;
+        Pong pong = 5;
     }
 }

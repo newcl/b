@@ -46,5 +46,31 @@ public interface MessageWrapperOrBuilder extends
    */
   info.chenliang.b.message.MoveToPositionOrBuilder getActionOrBuilder();
 
+  /**
+   * <code>.Ping ping = 4;</code>
+   */
+  boolean hasPing();
+  /**
+   * <code>.Ping ping = 4;</code>
+   */
+  info.chenliang.b.message.Ping getPing();
+  /**
+   * <code>.Ping ping = 4;</code>
+   */
+  info.chenliang.b.message.PingOrBuilder getPingOrBuilder();
+
+  /**
+   * <code>.Pong pong = 5;</code>
+   */
+  boolean hasPong();
+  /**
+   * <code>.Pong pong = 5;</code>
+   */
+  info.chenliang.b.message.Pong getPong();
+  /**
+   * <code>.Pong pong = 5;</code>
+   */
+  info.chenliang.b.message.PongOrBuilder getPongOrBuilder();
+
   public info.chenliang.b.message.MessageWrapper.MsgCase getMsgCase();
 }

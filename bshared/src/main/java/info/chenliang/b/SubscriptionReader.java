@@ -34,7 +34,9 @@ public class SubscriptionReader {
 
     void onFragment(DirectBuffer buffer, int offset, int length, Header header)  {
         try {
-            MessageWrapper wrapper = MessageWrapper.parseFrom(buffer.byteArray());
+            byte[] bytes = new byte[length];
+            buffer.getBytes(offset, bytes);
+            MessageWrapper wrapper = MessageWrapper.parseFrom(bytes);
             subscription.imageBySessionId(header.sessionId()).sourceIdentity();
             messageListener.onMessage(wrapper);
         } catch (Exception e) {

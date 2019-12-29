@@ -84,6 +84,34 @@ private static final long serialVersionUID = 0L;
             msgCase_ = 3;
             break;
           }
+          case 34: {
+            info.chenliang.b.message.Ping.Builder subBuilder = null;
+            if (msgCase_ == 4) {
+              subBuilder = ((info.chenliang.b.message.Ping) msg_).toBuilder();
+            }
+            msg_ =
+                input.readMessage(info.chenliang.b.message.Ping.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((info.chenliang.b.message.Ping) msg_);
+              msg_ = subBuilder.buildPartial();
+            }
+            msgCase_ = 4;
+            break;
+          }
+          case 42: {
+            info.chenliang.b.message.Pong.Builder subBuilder = null;
+            if (msgCase_ == 5) {
+              subBuilder = ((info.chenliang.b.message.Pong) msg_).toBuilder();
+            }
+            msg_ =
+                input.readMessage(info.chenliang.b.message.Pong.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((info.chenliang.b.message.Pong) msg_);
+              msg_ = subBuilder.buildPartial();
+            }
+            msgCase_ = 5;
+            break;
+          }
           default: {
             if (!parseUnknownFieldProto3(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -123,6 +151,8 @@ private static final long serialVersionUID = 0L;
     JOIN(1),
     JOINRESULT(2),
     ACTION(3),
+    PING(4),
+    PONG(5),
     MSG_NOT_SET(0);
     private final int value;
     private MsgCase(int value) {
@@ -141,6 +171,8 @@ private static final long serialVersionUID = 0L;
         case 1: return JOIN;
         case 2: return JOINRESULT;
         case 3: return ACTION;
+        case 4: return PING;
+        case 5: return PONG;
         case 0: return MSG_NOT_SET;
         default: return null;
       }
@@ -234,6 +266,58 @@ private static final long serialVersionUID = 0L;
     return info.chenliang.b.message.MoveToPosition.getDefaultInstance();
   }
 
+  public static final int PING_FIELD_NUMBER = 4;
+  /**
+   * <code>.Ping ping = 4;</code>
+   */
+  public boolean hasPing() {
+    return msgCase_ == 4;
+  }
+  /**
+   * <code>.Ping ping = 4;</code>
+   */
+  public info.chenliang.b.message.Ping getPing() {
+    if (msgCase_ == 4) {
+       return (info.chenliang.b.message.Ping) msg_;
+    }
+    return info.chenliang.b.message.Ping.getDefaultInstance();
+  }
+  /**
+   * <code>.Ping ping = 4;</code>
+   */
+  public info.chenliang.b.message.PingOrBuilder getPingOrBuilder() {
+    if (msgCase_ == 4) {
+       return (info.chenliang.b.message.Ping) msg_;
+    }
+    return info.chenliang.b.message.Ping.getDefaultInstance();
+  }
+
+  public static final int PONG_FIELD_NUMBER = 5;
+  /**
+   * <code>.Pong pong = 5;</code>
+   */
+  public boolean hasPong() {
+    return msgCase_ == 5;
+  }
+  /**
+   * <code>.Pong pong = 5;</code>
+   */
+  public info.chenliang.b.message.Pong getPong() {
+    if (msgCase_ == 5) {
+       return (info.chenliang.b.message.Pong) msg_;
+    }
+    return info.chenliang.b.message.Pong.getDefaultInstance();
+  }
+  /**
+   * <code>.Pong pong = 5;</code>
+   */
+  public info.chenliang.b.message.PongOrBuilder getPongOrBuilder() {
+    if (msgCase_ == 5) {
+       return (info.chenliang.b.message.Pong) msg_;
+    }
+    return info.chenliang.b.message.Pong.getDefaultInstance();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -257,6 +341,12 @@ private static final long serialVersionUID = 0L;
     if (msgCase_ == 3) {
       output.writeMessage(3, (info.chenliang.b.message.MoveToPosition) msg_);
     }
+    if (msgCase_ == 4) {
+      output.writeMessage(4, (info.chenliang.b.message.Ping) msg_);
+    }
+    if (msgCase_ == 5) {
+      output.writeMessage(5, (info.chenliang.b.message.Pong) msg_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -277,6 +367,14 @@ private static final long serialVersionUID = 0L;
     if (msgCase_ == 3) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(3, (info.chenliang.b.message.MoveToPosition) msg_);
+    }
+    if (msgCase_ == 4) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, (info.chenliang.b.message.Ping) msg_);
+    }
+    if (msgCase_ == 5) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(5, (info.chenliang.b.message.Pong) msg_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -310,6 +408,14 @@ private static final long serialVersionUID = 0L;
         result = result && getAction()
             .equals(other.getAction());
         break;
+      case 4:
+        result = result && getPing()
+            .equals(other.getPing());
+        break;
+      case 5:
+        result = result && getPong()
+            .equals(other.getPong());
+        break;
       case 0:
       default:
     }
@@ -336,6 +442,14 @@ private static final long serialVersionUID = 0L;
       case 3:
         hash = (37 * hash) + ACTION_FIELD_NUMBER;
         hash = (53 * hash) + getAction().hashCode();
+        break;
+      case 4:
+        hash = (37 * hash) + PING_FIELD_NUMBER;
+        hash = (53 * hash) + getPing().hashCode();
+        break;
+      case 5:
+        hash = (37 * hash) + PONG_FIELD_NUMBER;
+        hash = (53 * hash) + getPong().hashCode();
         break;
       case 0:
       default:
@@ -522,6 +636,20 @@ private static final long serialVersionUID = 0L;
           result.msg_ = actionBuilder_.build();
         }
       }
+      if (msgCase_ == 4) {
+        if (pingBuilder_ == null) {
+          result.msg_ = msg_;
+        } else {
+          result.msg_ = pingBuilder_.build();
+        }
+      }
+      if (msgCase_ == 5) {
+        if (pongBuilder_ == null) {
+          result.msg_ = msg_;
+        } else {
+          result.msg_ = pongBuilder_.build();
+        }
+      }
       result.msgCase_ = msgCase_;
       onBuilt();
       return result;
@@ -582,6 +710,14 @@ private static final long serialVersionUID = 0L;
         }
         case ACTION: {
           mergeAction(other.getAction());
+          break;
+        }
+        case PING: {
+          mergePing(other.getPing());
+          break;
+        }
+        case PONG: {
+          mergePong(other.getPong());
           break;
         }
         case MSG_NOT_SET: {
@@ -1038,6 +1174,278 @@ private static final long serialVersionUID = 0L;
       msgCase_ = 3;
       onChanged();;
       return actionBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        info.chenliang.b.message.Ping, info.chenliang.b.message.Ping.Builder, info.chenliang.b.message.PingOrBuilder> pingBuilder_;
+    /**
+     * <code>.Ping ping = 4;</code>
+     */
+    public boolean hasPing() {
+      return msgCase_ == 4;
+    }
+    /**
+     * <code>.Ping ping = 4;</code>
+     */
+    public info.chenliang.b.message.Ping getPing() {
+      if (pingBuilder_ == null) {
+        if (msgCase_ == 4) {
+          return (info.chenliang.b.message.Ping) msg_;
+        }
+        return info.chenliang.b.message.Ping.getDefaultInstance();
+      } else {
+        if (msgCase_ == 4) {
+          return pingBuilder_.getMessage();
+        }
+        return info.chenliang.b.message.Ping.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.Ping ping = 4;</code>
+     */
+    public Builder setPing(info.chenliang.b.message.Ping value) {
+      if (pingBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        msg_ = value;
+        onChanged();
+      } else {
+        pingBuilder_.setMessage(value);
+      }
+      msgCase_ = 4;
+      return this;
+    }
+    /**
+     * <code>.Ping ping = 4;</code>
+     */
+    public Builder setPing(
+        info.chenliang.b.message.Ping.Builder builderForValue) {
+      if (pingBuilder_ == null) {
+        msg_ = builderForValue.build();
+        onChanged();
+      } else {
+        pingBuilder_.setMessage(builderForValue.build());
+      }
+      msgCase_ = 4;
+      return this;
+    }
+    /**
+     * <code>.Ping ping = 4;</code>
+     */
+    public Builder mergePing(info.chenliang.b.message.Ping value) {
+      if (pingBuilder_ == null) {
+        if (msgCase_ == 4 &&
+            msg_ != info.chenliang.b.message.Ping.getDefaultInstance()) {
+          msg_ = info.chenliang.b.message.Ping.newBuilder((info.chenliang.b.message.Ping) msg_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          msg_ = value;
+        }
+        onChanged();
+      } else {
+        if (msgCase_ == 4) {
+          pingBuilder_.mergeFrom(value);
+        }
+        pingBuilder_.setMessage(value);
+      }
+      msgCase_ = 4;
+      return this;
+    }
+    /**
+     * <code>.Ping ping = 4;</code>
+     */
+    public Builder clearPing() {
+      if (pingBuilder_ == null) {
+        if (msgCase_ == 4) {
+          msgCase_ = 0;
+          msg_ = null;
+          onChanged();
+        }
+      } else {
+        if (msgCase_ == 4) {
+          msgCase_ = 0;
+          msg_ = null;
+        }
+        pingBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.Ping ping = 4;</code>
+     */
+    public info.chenliang.b.message.Ping.Builder getPingBuilder() {
+      return getPingFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.Ping ping = 4;</code>
+     */
+    public info.chenliang.b.message.PingOrBuilder getPingOrBuilder() {
+      if ((msgCase_ == 4) && (pingBuilder_ != null)) {
+        return pingBuilder_.getMessageOrBuilder();
+      } else {
+        if (msgCase_ == 4) {
+          return (info.chenliang.b.message.Ping) msg_;
+        }
+        return info.chenliang.b.message.Ping.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.Ping ping = 4;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        info.chenliang.b.message.Ping, info.chenliang.b.message.Ping.Builder, info.chenliang.b.message.PingOrBuilder> 
+        getPingFieldBuilder() {
+      if (pingBuilder_ == null) {
+        if (!(msgCase_ == 4)) {
+          msg_ = info.chenliang.b.message.Ping.getDefaultInstance();
+        }
+        pingBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            info.chenliang.b.message.Ping, info.chenliang.b.message.Ping.Builder, info.chenliang.b.message.PingOrBuilder>(
+                (info.chenliang.b.message.Ping) msg_,
+                getParentForChildren(),
+                isClean());
+        msg_ = null;
+      }
+      msgCase_ = 4;
+      onChanged();;
+      return pingBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        info.chenliang.b.message.Pong, info.chenliang.b.message.Pong.Builder, info.chenliang.b.message.PongOrBuilder> pongBuilder_;
+    /**
+     * <code>.Pong pong = 5;</code>
+     */
+    public boolean hasPong() {
+      return msgCase_ == 5;
+    }
+    /**
+     * <code>.Pong pong = 5;</code>
+     */
+    public info.chenliang.b.message.Pong getPong() {
+      if (pongBuilder_ == null) {
+        if (msgCase_ == 5) {
+          return (info.chenliang.b.message.Pong) msg_;
+        }
+        return info.chenliang.b.message.Pong.getDefaultInstance();
+      } else {
+        if (msgCase_ == 5) {
+          return pongBuilder_.getMessage();
+        }
+        return info.chenliang.b.message.Pong.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.Pong pong = 5;</code>
+     */
+    public Builder setPong(info.chenliang.b.message.Pong value) {
+      if (pongBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        msg_ = value;
+        onChanged();
+      } else {
+        pongBuilder_.setMessage(value);
+      }
+      msgCase_ = 5;
+      return this;
+    }
+    /**
+     * <code>.Pong pong = 5;</code>
+     */
+    public Builder setPong(
+        info.chenliang.b.message.Pong.Builder builderForValue) {
+      if (pongBuilder_ == null) {
+        msg_ = builderForValue.build();
+        onChanged();
+      } else {
+        pongBuilder_.setMessage(builderForValue.build());
+      }
+      msgCase_ = 5;
+      return this;
+    }
+    /**
+     * <code>.Pong pong = 5;</code>
+     */
+    public Builder mergePong(info.chenliang.b.message.Pong value) {
+      if (pongBuilder_ == null) {
+        if (msgCase_ == 5 &&
+            msg_ != info.chenliang.b.message.Pong.getDefaultInstance()) {
+          msg_ = info.chenliang.b.message.Pong.newBuilder((info.chenliang.b.message.Pong) msg_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          msg_ = value;
+        }
+        onChanged();
+      } else {
+        if (msgCase_ == 5) {
+          pongBuilder_.mergeFrom(value);
+        }
+        pongBuilder_.setMessage(value);
+      }
+      msgCase_ = 5;
+      return this;
+    }
+    /**
+     * <code>.Pong pong = 5;</code>
+     */
+    public Builder clearPong() {
+      if (pongBuilder_ == null) {
+        if (msgCase_ == 5) {
+          msgCase_ = 0;
+          msg_ = null;
+          onChanged();
+        }
+      } else {
+        if (msgCase_ == 5) {
+          msgCase_ = 0;
+          msg_ = null;
+        }
+        pongBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.Pong pong = 5;</code>
+     */
+    public info.chenliang.b.message.Pong.Builder getPongBuilder() {
+      return getPongFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.Pong pong = 5;</code>
+     */
+    public info.chenliang.b.message.PongOrBuilder getPongOrBuilder() {
+      if ((msgCase_ == 5) && (pongBuilder_ != null)) {
+        return pongBuilder_.getMessageOrBuilder();
+      } else {
+        if (msgCase_ == 5) {
+          return (info.chenliang.b.message.Pong) msg_;
+        }
+        return info.chenliang.b.message.Pong.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.Pong pong = 5;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        info.chenliang.b.message.Pong, info.chenliang.b.message.Pong.Builder, info.chenliang.b.message.PongOrBuilder> 
+        getPongFieldBuilder() {
+      if (pongBuilder_ == null) {
+        if (!(msgCase_ == 5)) {
+          msg_ = info.chenliang.b.message.Pong.getDefaultInstance();
+        }
+        pongBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            info.chenliang.b.message.Pong, info.chenliang.b.message.Pong.Builder, info.chenliang.b.message.PongOrBuilder>(
+                (info.chenliang.b.message.Pong) msg_,
+                getParentForChildren(),
+                isClean());
+        msg_ = null;
+      }
+      msgCase_ = 5;
+      onChanged();;
+      return pongBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

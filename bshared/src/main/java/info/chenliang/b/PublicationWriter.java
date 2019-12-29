@@ -6,20 +6,17 @@ import io.aeron.Publication;
 import lombok.Builder;
 import org.agrona.concurrent.UnsafeBuffer;
 
-import static io.aeron.Publication.ADMIN_ACTION;
-import static io.aeron.Publication.BACK_PRESSURED;
+import static io.aeron.Publication.*;
 
 @Builder
 public class PublicationWriter {
     private final Publication publication;
 
-    UnsafeBuffer buffer = new UnsafeBuffer(new byte[64*1024]);
-
     public void publish(MessageWrapper wrapper) {
-        buffer.putBytes(0, wrapper.toByteArray());
+        UnsafeBuffer buffer = new UnsafeBuffer(wrapper.toByteArray());
         long result = publication.offer(buffer);
 
-        while (result == ADMIN_ACTION || result == BACK_PRESSURED) {
+        while (result == ADMIN_ACTION || result == BACK_PRESSURED || result == NOT_CONNECTED) {
             result = publication.offer(buffer);
         }
 

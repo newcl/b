@@ -18,4 +18,8 @@ public class PlayerServiceImpl implements PlayerService {
         }
         return player;
     }
+
+    public void init() {
+        
+    }
 }
