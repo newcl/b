@@ -1,55 +1,58 @@
 package info.chenliang.b;
 
-import info.chenliang.b.message.Join;
-import info.chenliang.b.message.MessageWrapper;
+import info.chenliang.b.generated.message.Join;
+import info.chenliang.b.generated.message.MessageWrapper;
+import info.chenliang.b.generated.message.Pong;
+import info.chenliang.b.generated.message.PongOrBuilder;
+import info.chenliang.b.service.message.Address;
+import info.chenliang.b.service.message.MessageService;
+import info.chenliang.b.service.message.impl.AeronAddress;
 import io.aeron.Aeron;
 import io.aeron.Publication;
 import io.aeron.Subscription;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.io.IOException;
 
+@RequiredArgsConstructor
 @Slf4j
-@Builder
 public class Client {
-    private final int subscriptionPort;
-    private final int subscriptionStreamId;
-    private final int publicationPort;
-    private final int publicationStreamId;
+    @Value("${client.subPort:9900}")
+    private int subscriptionPort;
 
-    public void start(Aeron aeron) throws IOException {
-        final String subChannel = String.format("aeron:udp?endpoint=0.0.0.0:%d", subscriptionPort);
-        final String pubChannel = String.format("aeron:udp?endpoint=0.0.0.0:%d", publicationPort);
+    @Value("${client.subStreamId:1}")
+    private int subscriptionStreamId;
 
-        Subscription subscription = aeron.addSubscription(subChannel, subscriptionStreamId);
-        SubscriptionReader reader = SubscriptionReader.builder()
-            .subscription(subscription)
-            .messageListener(this::onMessage)
-            .build();
+    @Value("${client.pubPort:40124}")
+    private int publicationPort;
 
-        Publication publication = aeron.addPublication(pubChannel, publicationStreamId);
-        PublicationWriter writer = PublicationWriter.builder().publication(publication).build();
-        join(writer);
+    @Value("${client.pubStreamId:1}")
+    private int publicationStreamId;
 
-        while (true) {
-            reader.tryReadMessage();
-            Thread.yield();
-        }
-    }
+    @Autowired
+    MessageService messageService;
 
-    private void onMessage(MessageWrapper wrapper) {
+    public void start() {
+        messageService.receive(AeronAddress.builder().ip("0.0.0.0").port(subscriptionPort).streamId(subscriptionStreamId).build(), this::onMessage);
 
-    }
-
-    private void join(PublicationWriter writer) throws IOException {
-        MessageWrapper wrapper = MessageWrapper.newBuilder()
+        messageService.send(AeronAddress.builder().ip("0.0.0.0").port(publicationPort).streamId(publicationStreamId).build(), MessageWrapper.newBuilder()
             .setJoin(Join.newBuilder()
                 .setSubPort(subscriptionPort)
                 .setSubStreamId(subscriptionStreamId)
                 .setIp("0.0.0.0")
                 .build())
-            .build();
-        writer.publish(wrapper);
+            .build());
+    }
+
+    private void onMessage(Address from, MessageWrapper wrapper) {
+        log.info("Received message from server {}", wrapper);
+        if (wrapper.hasPing()) {
+            Pong pong = Pong.newBuilder().setTime(System.currentTimeMillis()).setMessage("Pong from client").build();
+            messageService.send(from, MessageWrapper.newBuilder().setPong(pong).build());
+        }
     }
 }

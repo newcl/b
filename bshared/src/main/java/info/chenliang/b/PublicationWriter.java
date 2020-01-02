@@ -1,12 +1,14 @@
 package info.chenliang.b;
 
 
-import info.chenliang.b.message.MessageWrapper;
+import info.chenliang.b.generated.message.MessageWrapper;
 import io.aeron.Publication;
 import lombok.Builder;
 import org.agrona.concurrent.UnsafeBuffer;
 
-import static io.aeron.Publication.*;
+import static io.aeron.Publication.ADMIN_ACTION;
+import static io.aeron.Publication.BACK_PRESSURED;
+import static io.aeron.Publication.NOT_CONNECTED;
 
 @Builder
 public class PublicationWriter {

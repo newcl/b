@@ -43,11 +43,11 @@
             <artifactId>netty-all</artifactId>
             <version>4.1.42.Final</version>
         </dependency>
-        <dependency>
-            <groupId>com.google.protobuf</groupId>
-            <artifactId>protobuf-java</artifactId>
-            <version>3.6.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.google.protobuf</groupId>-->
+<!--            <artifactId>protobuf-java</artifactId>-->
+<!--            <version>3.6.0</version>-->
+<!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/com.badlogicgames.gdx/gdx -->
         <dependency>
             <groupId>com.badlogicgames.gdx</groupId>
@@ -276,6 +276,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.2.2.RELEASE</version>
             </plugin>
         </plugins>
     </build>

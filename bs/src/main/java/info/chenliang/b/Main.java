@@ -4,8 +4,8 @@ import info.chenliang.b.battle.BattleService;
 import info.chenliang.b.battle.PlayerService;
 import info.chenliang.b.battle.impl.BattleServiceImpl;
 import info.chenliang.b.battle.impl.PlayerServiceImpl;
-import info.chenliang.b.message.MessageService;
-import info.chenliang.b.message.impl.MessageServiceImpl;
+import info.chenliang.b.service.message.MessageService;
+import info.chenliang.b.service.message.impl.MessageServiceImpl;
 import io.aeron.Aeron;
 import io.aeron.driver.MediaDriver;
 import lombok.extern.slf4j.Slf4j;
@@ -36,8 +36,7 @@ public class Main {
     }
 
     @Bean
-    public Aeron aeron() {
-        final MediaDriver driver = MediaDriver.launchEmbedded();
-        return Aeron.connect(new Aeron.Context().aeronDirectoryName(driver.aeronDirectoryName()));
+    public MediaDriver mediaDriver() {
+        return MediaDriver.launchEmbedded();
     }
 }

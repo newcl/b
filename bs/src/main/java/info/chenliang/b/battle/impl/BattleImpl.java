@@ -2,7 +2,7 @@ package info.chenliang.b.battle.impl;
 
 import akka.actor.AbstractActorWithTimers;
 import info.chenliang.b.battle.Battle;
-import info.chenliang.b.message.MessageWrapper;
+import info.chenliang.b.generated.message.MessageWrapper;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.Duration;

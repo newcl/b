@@ -1,7 +1,10 @@
 package info.chenliang.b;
 
-import info.chenliang.b.message.MessageWrapper;
+import info.chenliang.b.generated.message.MessageWrapper;
+import info.chenliang.b.service.message.impl.AeronAddress;
+import info.chenliang.b.service.message.impl.AeronAddressFromChannel;
 import io.aeron.FragmentAssembler;
+import io.aeron.Image;
 import io.aeron.Subscription;
 import io.aeron.logbuffer.FragmentHandler;
 import io.aeron.logbuffer.Header;
@@ -29,6 +32,7 @@ public class SubscriptionReader {
     }
 
     public void tryReadMessage() {
+//        log.info("polling message");
         subscription.poll(this.fragmentAssembler, 10);
     }
 
@@ -36,9 +40,10 @@ public class SubscriptionReader {
         try {
             byte[] bytes = new byte[length];
             buffer.getBytes(offset, bytes);
+
             MessageWrapper wrapper = MessageWrapper.parseFrom(bytes);
-            subscription.imageBySessionId(header.sessionId()).sourceIdentity();
-            messageListener.onMessage(wrapper);
+            Image image = subscription.imageBySessionId(header.sessionId());
+            messageListener.onMessage(AeronAddressFromChannel.builder().channel(image.subscription().channel()).streamId(header.streamId()).build(), wrapper);
         } catch (Exception e) {
             log.error("Parse message error sessionId={} streamId={}", header.sessionId(), header.streamId(), e);
         }
