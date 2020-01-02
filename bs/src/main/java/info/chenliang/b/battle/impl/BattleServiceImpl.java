@@ -12,7 +12,11 @@ import info.chenliang.b.service.message.MessageService;
 import info.chenliang.b.service.message.impl.AeronAddress;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+
+@Service
 @Slf4j
 public class BattleServiceImpl implements BattleService {
 
@@ -43,6 +47,7 @@ public class BattleServiceImpl implements BattleService {
         actorSystem = ActorSystem.create("battleService");
     }
 
+    @PostConstruct
     public void init() throws Exception {
         log.info("BattleServiceImpl initing");
 

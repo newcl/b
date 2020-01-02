@@ -10,9 +10,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 
 @RequiredArgsConstructor
 @Slf4j
+@Component
 public class Client {
     @Value("${client.subPort:9900}")
     private int subscriptionPort;
@@ -37,6 +41,7 @@ public class Client {
 
     private Address subAddress, pubAddress;
 
+    @PostConstruct
     public void start() {
         subAddress = AeronAddress.builder().ip(subscriptionIp).port(subscriptionPort).streamId(subscriptionStreamId).build();
         pubAddress = AeronAddress.builder().ip(publicationIp).port(publicationPort).streamId(publicationStreamId).build();

@@ -2,10 +2,13 @@ package info.chenliang.b.battle.impl;
 
 import info.chenliang.b.battle.Player;
 import info.chenliang.b.battle.PlayerService;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
+@Service
 public class PlayerServiceImpl implements PlayerService {
     private Map<String, Player> players = new HashMap<>();
 
@@ -19,7 +22,8 @@ public class PlayerServiceImpl implements PlayerService {
         return player;
     }
 
+    @PostConstruct
     public void init() {
-        
+
     }
 }

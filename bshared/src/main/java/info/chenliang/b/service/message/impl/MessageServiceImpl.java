@@ -12,13 +12,16 @@ import io.aeron.Subscription;
 import io.aeron.driver.MediaDriver;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+@Service
 @Slf4j
 public class MessageServiceImpl implements MessageService {
     @Autowired
@@ -29,6 +32,7 @@ public class MessageServiceImpl implements MessageService {
 
     ScheduledExecutorService service;
 
+    @PostConstruct
     public void init() {
         service = Executors.newScheduledThreadPool(64);
         service.scheduleAtFixedRate(this::readSubscriptions, 0, 5, TimeUnit.MILLISECONDS);
@@ -79,18 +83,14 @@ public class MessageServiceImpl implements MessageService {
     }
 
     private Publication getPublication(Address address) {
-        Aeron aeron = Aeron.connect(new Aeron.Context().aeronDirectoryName(driver.aeronDirectoryName()));
-        return aeron.addPublication(address.getChannel(), address.getStreamId());
+        String id = id(address);
+        Publication publication = publicationMap.get(id);
+        if (publication == null) {
+            Aeron aeron = Aeron.connect(new Aeron.Context().aeronDirectoryName(driver.aeronDirectoryName()));
+            publication = aeron.addPublication(address.getChannel(), address.getStreamId());
+            publicationMap.put(id, publication);
+        }
 
-
-//        String id = id(address);
-//        Publication publication = publicationMap.get(id);
-//        if (publication == null) {
-//            Aeron aeron = Aeron.connect(new Aeron.Context().aeronDirectoryName(driver.aeronDirectoryName()));
-//            publication = aeron.addPublication(address.getChannel(), address.getStreamId());
-//            publicationMap.put(id, publication);
-//        }
-//
-//        return publication;
+        return publication;
     }
 }
