@@ -8,77 +8,54 @@ public interface MessageWrapperOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.Join join = 1;</code>
-   * @return Whether the join field is set.
+   * <code>.Handshake handshake = 1;</code>
    */
-  boolean hasJoin();
+  boolean hasHandshake();
   /**
-   * <code>.Join join = 1;</code>
-   * @return The join.
+   * <code>.Handshake handshake = 1;</code>
    */
-  info.chenliang.b.generated.message.Join getJoin();
+  info.chenliang.b.generated.message.Handshake getHandshake();
   /**
-   * <code>.Join join = 1;</code>
+   * <code>.Handshake handshake = 1;</code>
    */
-  info.chenliang.b.generated.message.JoinOrBuilder getJoinOrBuilder();
+  info.chenliang.b.generated.message.HandshakeOrBuilder getHandshakeOrBuilder();
 
   /**
-   * <code>.JoinResult joinResult = 2;</code>
-   * @return Whether the joinResult field is set.
-   */
-  boolean hasJoinResult();
-  /**
-   * <code>.JoinResult joinResult = 2;</code>
-   * @return The joinResult.
-   */
-  info.chenliang.b.generated.message.JoinResult getJoinResult();
-  /**
-   * <code>.JoinResult joinResult = 2;</code>
-   */
-  info.chenliang.b.generated.message.JoinResultOrBuilder getJoinResultOrBuilder();
-
-  /**
-   * <code>.MoveToPosition action = 3;</code>
-   * @return Whether the action field is set.
+   * <code>.MoveToPosition action = 2;</code>
    */
   boolean hasAction();
   /**
-   * <code>.MoveToPosition action = 3;</code>
-   * @return The action.
+   * <code>.MoveToPosition action = 2;</code>
    */
   info.chenliang.b.generated.message.MoveToPosition getAction();
   /**
-   * <code>.MoveToPosition action = 3;</code>
+   * <code>.MoveToPosition action = 2;</code>
    */
   info.chenliang.b.generated.message.MoveToPositionOrBuilder getActionOrBuilder();
 
   /**
-   * <code>.Ping ping = 4;</code>
-   * @return Whether the ping field is set.
+   * <code>.Ping ping = 3;</code>
    */
   boolean hasPing();
   /**
-   * <code>.Ping ping = 4;</code>
-   * @return The ping.
+   * <code>.Ping ping = 3;</code>
    */
   info.chenliang.b.generated.message.Ping getPing();
   /**
-   * <code>.Ping ping = 4;</code>
+   * <code>.Ping ping = 3;</code>
    */
   info.chenliang.b.generated.message.PingOrBuilder getPingOrBuilder();
 
   /**
-   * <code>.Pong pong = 5;</code>
-   * @return Whether the pong field is set.
+   * <code>.Pong pong = 4;</code>
    */
   boolean hasPong();
   /**
-   * <code>.Pong pong = 5;</code>
-   * @return The pong.
+   * <code>.Pong pong = 4;</code>
    */
   info.chenliang.b.generated.message.Pong getPong();
   /**
-   * <code>.Pong pong = 5;</code>
+   * <code>.Pong pong = 4;</code>
    */
   info.chenliang.b.generated.message.PongOrBuilder getPongOrBuilder();
 

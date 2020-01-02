@@ -9,12 +9,10 @@ public interface MoveToPositionOrBuilder extends
 
   /**
    * <code>.Position position = 1;</code>
-   * @return Whether the position field is set.
    */
   boolean hasPosition();
   /**
    * <code>.Position position = 1;</code>
-   * @return The position.
    */
   info.chenliang.b.generated.message.Position getPosition();
   /**

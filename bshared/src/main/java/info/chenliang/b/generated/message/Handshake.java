@@ -9,27 +9,21 @@ package info.chenliang.b.generated.message;
  * Before game
  * </pre>
  *
- * Protobuf type {@code Join}
+ * Protobuf type {@code Handshake}
  */
-public  final class Join extends
+public  final class Handshake extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Join)
-    JoinOrBuilder {
+    // @@protoc_insertion_point(message_implements:Handshake)
+    HandshakeOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use Join.newBuilder() to construct.
-  private Join(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use Handshake.newBuilder() to construct.
+  private Handshake(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private Join() {
-    user_ = "";
+  private Handshake() {
+    subPort_ = 0;
+    subStreamId_ = 0;
     ip_ = "";
-  }
-
-  @java.lang.Override
-  @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
-    return new Join();
   }
 
   @java.lang.Override
@@ -37,7 +31,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Join(
+  private Handshake(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -45,6 +39,7 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
+    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -57,33 +52,22 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            room_ = input.readInt32();
-            break;
-          }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            user_ = s;
-            break;
-          }
-          case 24: {
-
             subPort_ = input.readInt32();
             break;
           }
-          case 32: {
+          case 16: {
 
             subStreamId_ = input.readInt32();
             break;
           }
-          case 42: {
+          case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
             ip_ = s;
             break;
           }
           default: {
-            if (!parseUnknownField(
+            if (!parseUnknownFieldProto3(
                 input, unknownFields, extensionRegistry, tag)) {
               done = true;
             }
@@ -103,88 +87,39 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return info.chenliang.b.generated.message.B.internal_static_Join_descriptor;
+    return info.chenliang.b.generated.message.B.internal_static_Handshake_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return info.chenliang.b.generated.message.B.internal_static_Join_fieldAccessorTable
+    return info.chenliang.b.generated.message.B.internal_static_Handshake_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            info.chenliang.b.generated.message.Join.class, info.chenliang.b.generated.message.Join.Builder.class);
+            info.chenliang.b.generated.message.Handshake.class, info.chenliang.b.generated.message.Handshake.Builder.class);
   }
 
-  public static final int ROOM_FIELD_NUMBER = 1;
-  private int room_;
-  /**
-   * <code>int32 room = 1;</code>
-   * @return The room.
-   */
-  public int getRoom() {
-    return room_;
-  }
-
-  public static final int USER_FIELD_NUMBER = 2;
-  private volatile java.lang.Object user_;
-  /**
-   * <code>string user = 2;</code>
-   * @return The user.
-   */
-  public java.lang.String getUser() {
-    java.lang.Object ref = user_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      user_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string user = 2;</code>
-   * @return The bytes for user.
-   */
-  public com.google.protobuf.ByteString
-      getUserBytes() {
-    java.lang.Object ref = user_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      user_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int SUBPORT_FIELD_NUMBER = 3;
+  public static final int SUBPORT_FIELD_NUMBER = 1;
   private int subPort_;
   /**
-   * <code>int32 subPort = 3;</code>
-   * @return The subPort.
+   * <code>int32 subPort = 1;</code>
    */
   public int getSubPort() {
     return subPort_;
   }
 
-  public static final int SUBSTREAMID_FIELD_NUMBER = 4;
+  public static final int SUBSTREAMID_FIELD_NUMBER = 2;
   private int subStreamId_;
   /**
-   * <code>int32 subStreamId = 4;</code>
-   * @return The subStreamId.
+   * <code>int32 subStreamId = 2;</code>
    */
   public int getSubStreamId() {
     return subStreamId_;
   }
 
-  public static final int IP_FIELD_NUMBER = 5;
+  public static final int IP_FIELD_NUMBER = 3;
   private volatile java.lang.Object ip_;
   /**
-   * <code>string ip = 5;</code>
-   * @return The ip.
+   * <code>string ip = 3;</code>
    */
   public java.lang.String getIp() {
     java.lang.Object ref = ip_;
@@ -199,8 +134,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string ip = 5;</code>
-   * @return The bytes for ip.
+   * <code>string ip = 3;</code>
    */
   public com.google.protobuf.ByteString
       getIpBytes() {
@@ -230,20 +164,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (room_ != 0) {
-      output.writeInt32(1, room_);
-    }
-    if (!getUserBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, user_);
-    }
     if (subPort_ != 0) {
-      output.writeInt32(3, subPort_);
+      output.writeInt32(1, subPort_);
     }
     if (subStreamId_ != 0) {
-      output.writeInt32(4, subStreamId_);
+      output.writeInt32(2, subStreamId_);
     }
     if (!getIpBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, ip_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, ip_);
     }
     unknownFields.writeTo(output);
   }
@@ -254,23 +182,16 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (room_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, room_);
-    }
-    if (!getUserBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, user_);
-    }
     if (subPort_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, subPort_);
+        .computeInt32Size(1, subPort_);
     }
     if (subStreamId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(4, subStreamId_);
+        .computeInt32Size(2, subStreamId_);
     }
     if (!getIpBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, ip_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, ip_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -282,23 +203,20 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof info.chenliang.b.generated.message.Join)) {
+    if (!(obj instanceof info.chenliang.b.generated.message.Handshake)) {
       return super.equals(obj);
     }
-    info.chenliang.b.generated.message.Join other = (info.chenliang.b.generated.message.Join) obj;
+    info.chenliang.b.generated.message.Handshake other = (info.chenliang.b.generated.message.Handshake) obj;
 
-    if (getRoom()
-        != other.getRoom()) return false;
-    if (!getUser()
-        .equals(other.getUser())) return false;
-    if (getSubPort()
-        != other.getSubPort()) return false;
-    if (getSubStreamId()
-        != other.getSubStreamId()) return false;
-    if (!getIp()
-        .equals(other.getIp())) return false;
-    if (!unknownFields.equals(other.unknownFields)) return false;
-    return true;
+    boolean result = true;
+    result = result && (getSubPort()
+        == other.getSubPort());
+    result = result && (getSubStreamId()
+        == other.getSubStreamId());
+    result = result && getIp()
+        .equals(other.getIp());
+    result = result && unknownFields.equals(other.unknownFields);
+    return result;
   }
 
   @java.lang.Override
@@ -308,10 +226,6 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + ROOM_FIELD_NUMBER;
-    hash = (53 * hash) + getRoom();
-    hash = (37 * hash) + USER_FIELD_NUMBER;
-    hash = (53 * hash) + getUser().hashCode();
     hash = (37 * hash) + SUBPORT_FIELD_NUMBER;
     hash = (53 * hash) + getSubPort();
     hash = (37 * hash) + SUBSTREAMID_FIELD_NUMBER;
@@ -323,69 +237,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static info.chenliang.b.generated.message.Join parseFrom(
+  public static info.chenliang.b.generated.message.Handshake parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static info.chenliang.b.generated.message.Join parseFrom(
+  public static info.chenliang.b.generated.message.Handshake parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static info.chenliang.b.generated.message.Join parseFrom(
+  public static info.chenliang.b.generated.message.Handshake parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static info.chenliang.b.generated.message.Join parseFrom(
+  public static info.chenliang.b.generated.message.Handshake parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static info.chenliang.b.generated.message.Join parseFrom(byte[] data)
+  public static info.chenliang.b.generated.message.Handshake parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static info.chenliang.b.generated.message.Join parseFrom(
+  public static info.chenliang.b.generated.message.Handshake parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static info.chenliang.b.generated.message.Join parseFrom(java.io.InputStream input)
+  public static info.chenliang.b.generated.message.Handshake parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static info.chenliang.b.generated.message.Join parseFrom(
+  public static info.chenliang.b.generated.message.Handshake parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static info.chenliang.b.generated.message.Join parseDelimitedFrom(java.io.InputStream input)
+  public static info.chenliang.b.generated.message.Handshake parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static info.chenliang.b.generated.message.Join parseDelimitedFrom(
+  public static info.chenliang.b.generated.message.Handshake parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static info.chenliang.b.generated.message.Join parseFrom(
+  public static info.chenliang.b.generated.message.Handshake parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static info.chenliang.b.generated.message.Join parseFrom(
+  public static info.chenliang.b.generated.message.Handshake parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -398,7 +312,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(info.chenliang.b.generated.message.Join prototype) {
+  public static Builder newBuilder(info.chenliang.b.generated.message.Handshake prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -419,26 +333,26 @@ private static final long serialVersionUID = 0L;
    * Before game
    * </pre>
    *
-   * Protobuf type {@code Join}
+   * Protobuf type {@code Handshake}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Join)
-      info.chenliang.b.generated.message.JoinOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Handshake)
+      info.chenliang.b.generated.message.HandshakeOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return info.chenliang.b.generated.message.B.internal_static_Join_descriptor;
+      return info.chenliang.b.generated.message.B.internal_static_Handshake_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return info.chenliang.b.generated.message.B.internal_static_Join_fieldAccessorTable
+      return info.chenliang.b.generated.message.B.internal_static_Handshake_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              info.chenliang.b.generated.message.Join.class, info.chenliang.b.generated.message.Join.Builder.class);
+              info.chenliang.b.generated.message.Handshake.class, info.chenliang.b.generated.message.Handshake.Builder.class);
     }
 
-    // Construct using info.chenliang.b.generated.message.Join.newBuilder()
+    // Construct using info.chenliang.b.generated.message.Handshake.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -456,10 +370,6 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      room_ = 0;
-
-      user_ = "";
-
       subPort_ = 0;
 
       subStreamId_ = 0;
@@ -472,17 +382,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return info.chenliang.b.generated.message.B.internal_static_Join_descriptor;
+      return info.chenliang.b.generated.message.B.internal_static_Handshake_descriptor;
     }
 
     @java.lang.Override
-    public info.chenliang.b.generated.message.Join getDefaultInstanceForType() {
-      return info.chenliang.b.generated.message.Join.getDefaultInstance();
+    public info.chenliang.b.generated.message.Handshake getDefaultInstanceForType() {
+      return info.chenliang.b.generated.message.Handshake.getDefaultInstance();
     }
 
     @java.lang.Override
-    public info.chenliang.b.generated.message.Join build() {
-      info.chenliang.b.generated.message.Join result = buildPartial();
+    public info.chenliang.b.generated.message.Handshake build() {
+      info.chenliang.b.generated.message.Handshake result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -490,10 +400,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public info.chenliang.b.generated.message.Join buildPartial() {
-      info.chenliang.b.generated.message.Join result = new info.chenliang.b.generated.message.Join(this);
-      result.room_ = room_;
-      result.user_ = user_;
+    public info.chenliang.b.generated.message.Handshake buildPartial() {
+      info.chenliang.b.generated.message.Handshake result = new info.chenliang.b.generated.message.Handshake(this);
       result.subPort_ = subPort_;
       result.subStreamId_ = subStreamId_;
       result.ip_ = ip_;
@@ -503,55 +411,48 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public Builder clone() {
-      return super.clone();
+      return (Builder) super.clone();
     }
     @java.lang.Override
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return super.setField(field, value);
+      return (Builder) super.setField(field, value);
     }
     @java.lang.Override
     public Builder clearField(
         com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return super.clearField(field);
+      return (Builder) super.clearField(field);
     }
     @java.lang.Override
     public Builder clearOneof(
         com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return super.clearOneof(oneof);
+      return (Builder) super.clearOneof(oneof);
     }
     @java.lang.Override
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         int index, java.lang.Object value) {
-      return super.setRepeatedField(field, index, value);
+      return (Builder) super.setRepeatedField(field, index, value);
     }
     @java.lang.Override
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return super.addRepeatedField(field, value);
+      return (Builder) super.addRepeatedField(field, value);
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof info.chenliang.b.generated.message.Join) {
-        return mergeFrom((info.chenliang.b.generated.message.Join)other);
+      if (other instanceof info.chenliang.b.generated.message.Handshake) {
+        return mergeFrom((info.chenliang.b.generated.message.Handshake)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(info.chenliang.b.generated.message.Join other) {
-      if (other == info.chenliang.b.generated.message.Join.getDefaultInstance()) return this;
-      if (other.getRoom() != 0) {
-        setRoom(other.getRoom());
-      }
-      if (!other.getUser().isEmpty()) {
-        user_ = other.user_;
-        onChanged();
-      }
+    public Builder mergeFrom(info.chenliang.b.generated.message.Handshake other) {
+      if (other == info.chenliang.b.generated.message.Handshake.getDefaultInstance()) return this;
       if (other.getSubPort() != 0) {
         setSubPort(other.getSubPort());
       }
@@ -577,11 +478,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      info.chenliang.b.generated.message.Join parsedMessage = null;
+      info.chenliang.b.generated.message.Handshake parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (info.chenliang.b.generated.message.Join) e.getUnfinishedMessage();
+        parsedMessage = (info.chenliang.b.generated.message.Handshake) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -591,124 +492,15 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int room_ ;
-    /**
-     * <code>int32 room = 1;</code>
-     * @return The room.
-     */
-    public int getRoom() {
-      return room_;
-    }
-    /**
-     * <code>int32 room = 1;</code>
-     * @param value The room to set.
-     * @return This builder for chaining.
-     */
-    public Builder setRoom(int value) {
-      
-      room_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 room = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearRoom() {
-      
-      room_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object user_ = "";
-    /**
-     * <code>string user = 2;</code>
-     * @return The user.
-     */
-    public java.lang.String getUser() {
-      java.lang.Object ref = user_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        user_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string user = 2;</code>
-     * @return The bytes for user.
-     */
-    public com.google.protobuf.ByteString
-        getUserBytes() {
-      java.lang.Object ref = user_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        user_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string user = 2;</code>
-     * @param value The user to set.
-     * @return This builder for chaining.
-     */
-    public Builder setUser(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      user_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string user = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearUser() {
-      
-      user_ = getDefaultInstance().getUser();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string user = 2;</code>
-     * @param value The bytes for user to set.
-     * @return This builder for chaining.
-     */
-    public Builder setUserBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      user_ = value;
-      onChanged();
-      return this;
-    }
-
     private int subPort_ ;
     /**
-     * <code>int32 subPort = 3;</code>
-     * @return The subPort.
+     * <code>int32 subPort = 1;</code>
      */
     public int getSubPort() {
       return subPort_;
     }
     /**
-     * <code>int32 subPort = 3;</code>
-     * @param value The subPort to set.
-     * @return This builder for chaining.
+     * <code>int32 subPort = 1;</code>
      */
     public Builder setSubPort(int value) {
       
@@ -717,8 +509,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 subPort = 3;</code>
-     * @return This builder for chaining.
+     * <code>int32 subPort = 1;</code>
      */
     public Builder clearSubPort() {
       
@@ -729,16 +520,13 @@ private static final long serialVersionUID = 0L;
 
     private int subStreamId_ ;
     /**
-     * <code>int32 subStreamId = 4;</code>
-     * @return The subStreamId.
+     * <code>int32 subStreamId = 2;</code>
      */
     public int getSubStreamId() {
       return subStreamId_;
     }
     /**
-     * <code>int32 subStreamId = 4;</code>
-     * @param value The subStreamId to set.
-     * @return This builder for chaining.
+     * <code>int32 subStreamId = 2;</code>
      */
     public Builder setSubStreamId(int value) {
       
@@ -747,8 +535,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 subStreamId = 4;</code>
-     * @return This builder for chaining.
+     * <code>int32 subStreamId = 2;</code>
      */
     public Builder clearSubStreamId() {
       
@@ -759,8 +546,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object ip_ = "";
     /**
-     * <code>string ip = 5;</code>
-     * @return The ip.
+     * <code>string ip = 3;</code>
      */
     public java.lang.String getIp() {
       java.lang.Object ref = ip_;
@@ -775,8 +561,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string ip = 5;</code>
-     * @return The bytes for ip.
+     * <code>string ip = 3;</code>
      */
     public com.google.protobuf.ByteString
         getIpBytes() {
@@ -792,9 +577,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string ip = 5;</code>
-     * @param value The ip to set.
-     * @return This builder for chaining.
+     * <code>string ip = 3;</code>
      */
     public Builder setIp(
         java.lang.String value) {
@@ -807,8 +590,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string ip = 5;</code>
-     * @return This builder for chaining.
+     * <code>string ip = 3;</code>
      */
     public Builder clearIp() {
       
@@ -817,9 +599,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string ip = 5;</code>
-     * @param value The bytes for ip to set.
-     * @return This builder for chaining.
+     * <code>string ip = 3;</code>
      */
     public Builder setIpBytes(
         com.google.protobuf.ByteString value) {
@@ -835,7 +615,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFields(unknownFields);
+      return super.setUnknownFieldsProto3(unknownFields);
     }
 
     @java.lang.Override
@@ -845,41 +625,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Join)
+    // @@protoc_insertion_point(builder_scope:Handshake)
   }
 
-  // @@protoc_insertion_point(class_scope:Join)
-  private static final info.chenliang.b.generated.message.Join DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Handshake)
+  private static final info.chenliang.b.generated.message.Handshake DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new info.chenliang.b.generated.message.Join();
+    DEFAULT_INSTANCE = new info.chenliang.b.generated.message.Handshake();
   }
 
-  public static info.chenliang.b.generated.message.Join getDefaultInstance() {
+  public static info.chenliang.b.generated.message.Handshake getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Join>
-      PARSER = new com.google.protobuf.AbstractParser<Join>() {
+  private static final com.google.protobuf.Parser<Handshake>
+      PARSER = new com.google.protobuf.AbstractParser<Handshake>() {
     @java.lang.Override
-    public Join parsePartialFrom(
+    public Handshake parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Join(input, extensionRegistry);
+      return new Handshake(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<Join> parser() {
+  public static com.google.protobuf.Parser<Handshake> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<Join> getParserForType() {
+  public com.google.protobuf.Parser<Handshake> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public info.chenliang.b.generated.message.Join getDefaultInstanceForType() {
+  public info.chenliang.b.generated.message.Handshake getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

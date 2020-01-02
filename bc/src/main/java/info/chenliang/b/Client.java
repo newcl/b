@@ -1,22 +1,15 @@
 package info.chenliang.b;
 
-import info.chenliang.b.generated.message.Join;
+import info.chenliang.b.generated.message.Handshake;
 import info.chenliang.b.generated.message.MessageWrapper;
 import info.chenliang.b.generated.message.Pong;
-import info.chenliang.b.generated.message.PongOrBuilder;
 import info.chenliang.b.service.message.Address;
 import info.chenliang.b.service.message.MessageService;
 import info.chenliang.b.service.message.impl.AeronAddress;
-import io.aeron.Aeron;
-import io.aeron.Publication;
-import io.aeron.Subscription;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-
-import java.io.IOException;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -27,20 +20,31 @@ public class Client {
     @Value("${client.subStreamId:1}")
     private int subscriptionStreamId;
 
+    @Value("${client.subIp:0.0.0.0}")
+    private String subscriptionIp;
+
     @Value("${client.pubPort:40124}")
     private int publicationPort;
 
     @Value("${client.pubStreamId:1}")
     private int publicationStreamId;
 
+    @Value("${client.pubIp:0.0.0.0}")
+    private String publicationIp;
+
     @Autowired
     MessageService messageService;
 
-    public void start() {
-        messageService.receive(AeronAddress.builder().ip("0.0.0.0").port(subscriptionPort).streamId(subscriptionStreamId).build(), this::onMessage);
+    private Address subAddress, pubAddress;
 
-        messageService.send(AeronAddress.builder().ip("0.0.0.0").port(publicationPort).streamId(publicationStreamId).build(), MessageWrapper.newBuilder()
-            .setJoin(Join.newBuilder()
+    public void start() {
+        subAddress = AeronAddress.builder().ip(subscriptionIp).port(subscriptionPort).streamId(subscriptionStreamId).build();
+        pubAddress = AeronAddress.builder().ip(publicationIp).port(publicationPort).streamId(publicationStreamId).build();
+
+        messageService.receive(subAddress, this::onMessage);
+
+        messageService.send(pubAddress, MessageWrapper.newBuilder()
+            .setHandshake(Handshake.newBuilder()
                 .setSubPort(subscriptionPort)
                 .setSubStreamId(subscriptionStreamId)
                 .setIp("0.0.0.0")
@@ -48,11 +52,11 @@ public class Client {
             .build());
     }
 
-    private void onMessage(Address from, MessageWrapper wrapper) {
+    private void onMessage(String identity, MessageWrapper wrapper) {
         log.info("Received message from server {}", wrapper);
         if (wrapper.hasPing()) {
             Pong pong = Pong.newBuilder().setTime(System.currentTimeMillis()).setMessage("Pong from client").build();
-            messageService.send(from, MessageWrapper.newBuilder().setPong(pong).build());
+            messageService.send(pubAddress, MessageWrapper.newBuilder().setPong(pong).build());
         }
     }
 }

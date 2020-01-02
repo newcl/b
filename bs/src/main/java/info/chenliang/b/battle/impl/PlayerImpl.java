@@ -1,6 +1,7 @@
 package info.chenliang.b.battle.impl;
 
 import info.chenliang.b.battle.Player;
+import info.chenliang.b.service.message.Address;
 import io.aeron.Publication;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,6 +18,10 @@ public class PlayerImpl implements Player {
     @Getter
     @Setter
     private Publication publication;
+
+    @Getter
+    @Setter
+    private Address subscriptionAddress;
 
     @Builder
     public static Player build(String id) {

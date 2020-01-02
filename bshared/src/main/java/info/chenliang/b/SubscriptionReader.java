@@ -1,8 +1,6 @@
 package info.chenliang.b;
 
 import info.chenliang.b.generated.message.MessageWrapper;
-import info.chenliang.b.service.message.impl.AeronAddress;
-import info.chenliang.b.service.message.impl.AeronAddressFromChannel;
 import io.aeron.FragmentAssembler;
 import io.aeron.Image;
 import io.aeron.Subscription;
@@ -43,7 +41,8 @@ public class SubscriptionReader {
 
             MessageWrapper wrapper = MessageWrapper.parseFrom(bytes);
             Image image = subscription.imageBySessionId(header.sessionId());
-            messageListener.onMessage(AeronAddressFromChannel.builder().channel(image.subscription().channel()).streamId(header.streamId()).build(), wrapper);
+
+            messageListener.onMessage(image.sourceIdentity(), wrapper);
         } catch (Exception e) {
             log.error("Parse message error sessionId={} streamId={}", header.sessionId(), header.streamId(), e);
         }

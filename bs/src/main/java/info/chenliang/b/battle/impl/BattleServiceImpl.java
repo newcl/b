@@ -4,7 +4,7 @@ import akka.actor.ActorSystem;
 import info.chenliang.b.battle.Battle;
 import info.chenliang.b.battle.BattleService;
 import info.chenliang.b.battle.PlayerService;
-import info.chenliang.b.generated.message.Join;
+import info.chenliang.b.generated.message.Handshake;
 import info.chenliang.b.generated.message.MessageWrapper;
 import info.chenliang.b.generated.message.Ping;
 import info.chenliang.b.service.message.Address;
@@ -55,24 +55,29 @@ public class BattleServiceImpl implements BattleService {
         log.info("BattleServiceImpl init done");
     }
 
-    void onMessage(Address from, MessageWrapper wrapper) {
+    void onMessage(String identity, MessageWrapper wrapper) {
 
         log.info("Client message {}", wrapper);
-        if (wrapper.hasJoin()) {
-            log.info("Join received {}", wrapper.getJoin());
-            Join join = wrapper.getJoin();
+        if (wrapper.hasHandshake()) {
+            log.info("Handshake received {}", wrapper.getHandshake());
+            Handshake handshake = wrapper.getHandshake();
 
-            messageService.send(AeronAddress.builder()
-                .ip(join.getIp())
-                .port(join.getSubPort())
-                .streamId(join.getSubStreamId()).build(),
+            Address subAddress = AeronAddress.builder()
+                .ip(handshake.getIp())
+                .port(handshake.getSubPort())
+                .streamId(handshake.getSubStreamId()).build();
+            playerService.getPlayer(identity).setSubscriptionAddress(subAddress);
+
+            messageService.send(subAddress,
                 MessageWrapper.newBuilder()
                     .setPing(Ping.newBuilder().setTime(System.currentTimeMillis()).setMessage("Ping!").build())
                     .build());
         } else if (wrapper.hasPong()) {
             log.info("Received pong from client {}", wrapper.getPong());
 
-            messageService.send(from, MessageWrapper.newBuilder()
+            Address subAddress = playerService.getPlayer(identity).getSubscriptionAddress();
+
+            messageService.send(subAddress, MessageWrapper.newBuilder()
                 .setPing(Ping.newBuilder().setTime(System.currentTimeMillis()).setMessage("Ping!").build())
                 .build());
         }
