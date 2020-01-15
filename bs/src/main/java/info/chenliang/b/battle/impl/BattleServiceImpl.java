@@ -53,7 +53,7 @@ public class BattleServiceImpl implements BattleService {
 
         messageService.receive(AeronAddress.builder()
                 .ip("0.0.0.0")
-                .port(40124)
+                .port(40125)
                 .streamId(1).build(),
             this::onMessage);
 
