@@ -9,20 +9,24 @@ public interface HandshakeOrBuilder extends
 
   /**
    * <code>int32 subPort = 1;</code>
+   * @return The subPort.
    */
   int getSubPort();
 
   /**
    * <code>int32 subStreamId = 2;</code>
+   * @return The subStreamId.
    */
   int getSubStreamId();
 
   /**
    * <code>string ip = 3;</code>
+   * @return The ip.
    */
   java.lang.String getIp();
   /**
    * <code>string ip = 3;</code>
+   * @return The bytes for ip.
    */
   com.google.protobuf.ByteString
       getIpBytes();

@@ -21,8 +21,13 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Position() {
-    x_ = 0F;
-    y_ = 0F;
+  }
+
+  @java.lang.Override
+  @SuppressWarnings({"unused"})
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
+    return new Position();
   }
 
   @java.lang.Override
@@ -38,7 +43,6 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -60,7 +64,7 @@ private static final long serialVersionUID = 0L;
             break;
           }
           default: {
-            if (!parseUnknownFieldProto3(
+            if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
               done = true;
             }
@@ -95,6 +99,7 @@ private static final long serialVersionUID = 0L;
   private float x_;
   /**
    * <code>float x = 1;</code>
+   * @return The x.
    */
   public float getX() {
     return x_;
@@ -104,6 +109,7 @@ private static final long serialVersionUID = 0L;
   private float y_;
   /**
    * <code>float y = 2;</code>
+   * @return The y.
    */
   public float getY() {
     return y_;
@@ -161,17 +167,14 @@ private static final long serialVersionUID = 0L;
     }
     info.chenliang.b.generated.message.Position other = (info.chenliang.b.generated.message.Position) obj;
 
-    boolean result = true;
-    result = result && (
-        java.lang.Float.floatToIntBits(getX())
-        == java.lang.Float.floatToIntBits(
-            other.getX()));
-    result = result && (
-        java.lang.Float.floatToIntBits(getY())
-        == java.lang.Float.floatToIntBits(
-            other.getY()));
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
+    if (java.lang.Float.floatToIntBits(getX())
+        != java.lang.Float.floatToIntBits(
+            other.getX())) return false;
+    if (java.lang.Float.floatToIntBits(getY())
+        != java.lang.Float.floatToIntBits(
+            other.getY())) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
+    return true;
   }
 
   @java.lang.Override
@@ -363,35 +366,35 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public Builder clone() {
-      return (Builder) super.clone();
+      return super.clone();
     }
     @java.lang.Override
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return (Builder) super.setField(field, value);
+      return super.setField(field, value);
     }
     @java.lang.Override
     public Builder clearField(
         com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
+      return super.clearField(field);
     }
     @java.lang.Override
     public Builder clearOneof(
         com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
+      return super.clearOneof(oneof);
     }
     @java.lang.Override
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
+      return super.setRepeatedField(field, index, value);
     }
     @java.lang.Override
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
+      return super.addRepeatedField(field, value);
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -443,12 +446,15 @@ private static final long serialVersionUID = 0L;
     private float x_ ;
     /**
      * <code>float x = 1;</code>
+     * @return The x.
      */
     public float getX() {
       return x_;
     }
     /**
      * <code>float x = 1;</code>
+     * @param value The x to set.
+     * @return This builder for chaining.
      */
     public Builder setX(float value) {
       
@@ -458,6 +464,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>float x = 1;</code>
+     * @return This builder for chaining.
      */
     public Builder clearX() {
       
@@ -469,12 +476,15 @@ private static final long serialVersionUID = 0L;
     private float y_ ;
     /**
      * <code>float y = 2;</code>
+     * @return The y.
      */
     public float getY() {
       return y_;
     }
     /**
      * <code>float y = 2;</code>
+     * @param value The y to set.
+     * @return This builder for chaining.
      */
     public Builder setY(float value) {
       
@@ -484,6 +494,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>float y = 2;</code>
+     * @return This builder for chaining.
      */
     public Builder clearY() {
       
@@ -494,7 +505,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return super.setUnknownFields(unknownFields);
     }
 
     @java.lang.Override

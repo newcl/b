@@ -19,6 +19,13 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
+  @SuppressWarnings({"unused"})
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
+    return new MessageWrapper();
+  }
+
+  @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
     return this.unknownFields;
@@ -31,7 +38,6 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -99,7 +105,7 @@ private static final long serialVersionUID = 0L;
             break;
           }
           default: {
-            if (!parseUnknownFieldProto3(
+            if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
               done = true;
             }
@@ -133,7 +139,8 @@ private static final long serialVersionUID = 0L;
   private int msgCase_ = 0;
   private java.lang.Object msg_;
   public enum MsgCase
-      implements com.google.protobuf.Internal.EnumLite {
+      implements com.google.protobuf.Internal.EnumLite,
+          com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     HANDSHAKE(1),
     ACTION(2),
     PING(3),
@@ -144,6 +151,8 @@ private static final long serialVersionUID = 0L;
       this.value = value;
     }
     /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
@@ -175,12 +184,14 @@ private static final long serialVersionUID = 0L;
   public static final int HANDSHAKE_FIELD_NUMBER = 1;
   /**
    * <code>.Handshake handshake = 1;</code>
+   * @return Whether the handshake field is set.
    */
   public boolean hasHandshake() {
     return msgCase_ == 1;
   }
   /**
    * <code>.Handshake handshake = 1;</code>
+   * @return The handshake.
    */
   public info.chenliang.b.generated.message.Handshake getHandshake() {
     if (msgCase_ == 1) {
@@ -201,12 +212,14 @@ private static final long serialVersionUID = 0L;
   public static final int ACTION_FIELD_NUMBER = 2;
   /**
    * <code>.MoveToPosition action = 2;</code>
+   * @return Whether the action field is set.
    */
   public boolean hasAction() {
     return msgCase_ == 2;
   }
   /**
    * <code>.MoveToPosition action = 2;</code>
+   * @return The action.
    */
   public info.chenliang.b.generated.message.MoveToPosition getAction() {
     if (msgCase_ == 2) {
@@ -227,12 +240,14 @@ private static final long serialVersionUID = 0L;
   public static final int PING_FIELD_NUMBER = 3;
   /**
    * <code>.Ping ping = 3;</code>
+   * @return Whether the ping field is set.
    */
   public boolean hasPing() {
     return msgCase_ == 3;
   }
   /**
    * <code>.Ping ping = 3;</code>
+   * @return The ping.
    */
   public info.chenliang.b.generated.message.Ping getPing() {
     if (msgCase_ == 3) {
@@ -253,12 +268,14 @@ private static final long serialVersionUID = 0L;
   public static final int PONG_FIELD_NUMBER = 4;
   /**
    * <code>.Pong pong = 4;</code>
+   * @return Whether the pong field is set.
    */
   public boolean hasPong() {
     return msgCase_ == 4;
   }
   /**
    * <code>.Pong pong = 4;</code>
+   * @return The pong.
    */
   public info.chenliang.b.generated.message.Pong getPong() {
     if (msgCase_ == 4) {
@@ -342,32 +359,29 @@ private static final long serialVersionUID = 0L;
     }
     info.chenliang.b.generated.message.MessageWrapper other = (info.chenliang.b.generated.message.MessageWrapper) obj;
 
-    boolean result = true;
-    result = result && getMsgCase().equals(
-        other.getMsgCase());
-    if (!result) return false;
+    if (!getMsgCase().equals(other.getMsgCase())) return false;
     switch (msgCase_) {
       case 1:
-        result = result && getHandshake()
-            .equals(other.getHandshake());
+        if (!getHandshake()
+            .equals(other.getHandshake())) return false;
         break;
       case 2:
-        result = result && getAction()
-            .equals(other.getAction());
+        if (!getAction()
+            .equals(other.getAction())) return false;
         break;
       case 3:
-        result = result && getPing()
-            .equals(other.getPing());
+        if (!getPing()
+            .equals(other.getPing())) return false;
         break;
       case 4:
-        result = result && getPong()
-            .equals(other.getPong());
+        if (!getPong()
+            .equals(other.getPong())) return false;
         break;
       case 0:
       default:
     }
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
+    if (!unknownFields.equals(other.unknownFields)) return false;
+    return true;
   }
 
   @java.lang.Override
@@ -593,35 +607,35 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public Builder clone() {
-      return (Builder) super.clone();
+      return super.clone();
     }
     @java.lang.Override
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return (Builder) super.setField(field, value);
+      return super.setField(field, value);
     }
     @java.lang.Override
     public Builder clearField(
         com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
+      return super.clearField(field);
     }
     @java.lang.Override
     public Builder clearOneof(
         com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
+      return super.clearOneof(oneof);
     }
     @java.lang.Override
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
+      return super.setRepeatedField(field, index, value);
     }
     @java.lang.Override
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
+      return super.addRepeatedField(field, value);
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -704,12 +718,14 @@ private static final long serialVersionUID = 0L;
         info.chenliang.b.generated.message.Handshake, info.chenliang.b.generated.message.Handshake.Builder, info.chenliang.b.generated.message.HandshakeOrBuilder> handshakeBuilder_;
     /**
      * <code>.Handshake handshake = 1;</code>
+     * @return Whether the handshake field is set.
      */
     public boolean hasHandshake() {
       return msgCase_ == 1;
     }
     /**
      * <code>.Handshake handshake = 1;</code>
+     * @return The handshake.
      */
     public info.chenliang.b.generated.message.Handshake getHandshake() {
       if (handshakeBuilder_ == null) {
@@ -840,12 +856,14 @@ private static final long serialVersionUID = 0L;
         info.chenliang.b.generated.message.MoveToPosition, info.chenliang.b.generated.message.MoveToPosition.Builder, info.chenliang.b.generated.message.MoveToPositionOrBuilder> actionBuilder_;
     /**
      * <code>.MoveToPosition action = 2;</code>
+     * @return Whether the action field is set.
      */
     public boolean hasAction() {
       return msgCase_ == 2;
     }
     /**
      * <code>.MoveToPosition action = 2;</code>
+     * @return The action.
      */
     public info.chenliang.b.generated.message.MoveToPosition getAction() {
       if (actionBuilder_ == null) {
@@ -976,12 +994,14 @@ private static final long serialVersionUID = 0L;
         info.chenliang.b.generated.message.Ping, info.chenliang.b.generated.message.Ping.Builder, info.chenliang.b.generated.message.PingOrBuilder> pingBuilder_;
     /**
      * <code>.Ping ping = 3;</code>
+     * @return Whether the ping field is set.
      */
     public boolean hasPing() {
       return msgCase_ == 3;
     }
     /**
      * <code>.Ping ping = 3;</code>
+     * @return The ping.
      */
     public info.chenliang.b.generated.message.Ping getPing() {
       if (pingBuilder_ == null) {
@@ -1112,12 +1132,14 @@ private static final long serialVersionUID = 0L;
         info.chenliang.b.generated.message.Pong, info.chenliang.b.generated.message.Pong.Builder, info.chenliang.b.generated.message.PongOrBuilder> pongBuilder_;
     /**
      * <code>.Pong pong = 4;</code>
+     * @return Whether the pong field is set.
      */
     public boolean hasPong() {
       return msgCase_ == 4;
     }
     /**
      * <code>.Pong pong = 4;</code>
+     * @return The pong.
      */
     public info.chenliang.b.generated.message.Pong getPong() {
       if (pongBuilder_ == null) {
@@ -1246,7 +1268,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return super.setUnknownFields(unknownFields);
     }
 
     @java.lang.Override

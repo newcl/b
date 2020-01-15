@@ -9,15 +9,18 @@ public interface PongOrBuilder extends
 
   /**
    * <code>int64 time = 1;</code>
+   * @return The time.
    */
   long getTime();
 
   /**
    * <code>string message = 2;</code>
+   * @return The message.
    */
   java.lang.String getMessage();
   /**
    * <code>string message = 2;</code>
+   * @return The bytes for message.
    */
   com.google.protobuf.ByteString
       getMessageBytes();

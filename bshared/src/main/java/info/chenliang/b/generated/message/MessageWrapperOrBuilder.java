@@ -9,10 +9,12 @@ public interface MessageWrapperOrBuilder extends
 
   /**
    * <code>.Handshake handshake = 1;</code>
+   * @return Whether the handshake field is set.
    */
   boolean hasHandshake();
   /**
    * <code>.Handshake handshake = 1;</code>
+   * @return The handshake.
    */
   info.chenliang.b.generated.message.Handshake getHandshake();
   /**
@@ -22,10 +24,12 @@ public interface MessageWrapperOrBuilder extends
 
   /**
    * <code>.MoveToPosition action = 2;</code>
+   * @return Whether the action field is set.
    */
   boolean hasAction();
   /**
    * <code>.MoveToPosition action = 2;</code>
+   * @return The action.
    */
   info.chenliang.b.generated.message.MoveToPosition getAction();
   /**
@@ -35,10 +39,12 @@ public interface MessageWrapperOrBuilder extends
 
   /**
    * <code>.Ping ping = 3;</code>
+   * @return Whether the ping field is set.
    */
   boolean hasPing();
   /**
    * <code>.Ping ping = 3;</code>
+   * @return The ping.
    */
   info.chenliang.b.generated.message.Ping getPing();
   /**
@@ -48,10 +54,12 @@ public interface MessageWrapperOrBuilder extends
 
   /**
    * <code>.Pong pong = 4;</code>
+   * @return Whether the pong field is set.
    */
   boolean hasPong();
   /**
    * <code>.Pong pong = 4;</code>
+   * @return The pong.
    */
   info.chenliang.b.generated.message.Pong getPong();
   /**
