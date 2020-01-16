@@ -270,15 +270,15 @@
                 <version>1.18.4.0</version>
                 <executions>
                     <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>delombok</goal>
-                        </goals>
-                        <configuration>
-                            <addOutputDirectory>false</addOutputDirectory>
-                            <sourceDirectory>src/main/java</sourceDirectory>
-                            <encoding>UTF-8</encoding>
-                        </configuration>
+<!--                        <phase>generate-sources</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>delombok</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <addOutputDirectory>false</addOutputDirectory>-->
+<!--                            <sourceDirectory>src/main/java</sourceDirectory>-->
+<!--                            <encoding>UTF-8</encoding>-->
+<!--                        </configuration>-->
                     </execution>
                 </executions>
             </plugin>
