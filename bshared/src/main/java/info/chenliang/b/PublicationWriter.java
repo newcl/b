@@ -22,6 +22,6 @@ public class PublicationWriter {
             result = publication.offer(buffer);
         }
 
-        if (result < 0) throw new RuntimeException("Unable to join");
+        if (result < 0) throw new RuntimeException("Unable to publish message " + result);
     }
 }
