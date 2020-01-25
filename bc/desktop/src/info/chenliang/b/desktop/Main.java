@@ -1,4 +1,4 @@
-package info.chenliang.b;
+package info.chenliang.b.desktop;
 
 import io.aeron.driver.MediaDriver;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @Slf4j
-@SpringBootApplication(scanBasePackages = {"info.chenliang.b", "info.chenliang.b.desktop"})
+@SpringBootApplication
 public class Main {
     @Bean
     public MediaDriver mediaDriver() {
