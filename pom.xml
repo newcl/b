@@ -35,7 +35,6 @@
       
     <module>bshared</module>
     <module>bs</module>
-    <module>bc</module>
       
   </modules>
 </project>
