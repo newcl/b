@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @Slf4j
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "info.chenliang.b")
 public class Main {
     @Bean
     public MediaDriver mediaDriver() {
