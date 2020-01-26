@@ -14,7 +14,7 @@ public class DesktopLauncher {
 
 	@PostConstruct
 	public void init() {
-		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		new LwjglApplication(new MyGdxGame(), config);
+//		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+//		new LwjglApplication(new MyGdxGame(), config);
 	}
 }

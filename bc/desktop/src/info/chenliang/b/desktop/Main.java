@@ -1,5 +1,8 @@
 package info.chenliang.b.desktop;
 
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import info.chenliang.b.MyGdxGame;
 import io.aeron.driver.MediaDriver;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +18,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+        new LwjglApplication(new MyGdxGame(), config);
         SpringApplication.run(Main.class, args);
     }
 }
