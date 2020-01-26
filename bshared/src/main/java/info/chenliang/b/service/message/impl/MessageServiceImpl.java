@@ -34,8 +34,8 @@ public class MessageServiceImpl implements MessageService {
 
     @PostConstruct
     public void init() {
-        service = Executors.newScheduledThreadPool(64);
-        service.scheduleAtFixedRate(this::readSubscriptions, 0, 5, TimeUnit.MILLISECONDS);
+        service = Executors.newSingleThreadScheduledExecutor();
+        service.scheduleAtFixedRate(this::readSubscriptions, 0, 15, TimeUnit.MILLISECONDS);
     }
 
     private void readSubscriptions() {

@@ -44,6 +44,11 @@ allprojects {
     }
 }
 
+configurations {
+    all*.exclude module : 'spring-boot-starter-logging'
+    runtime.exclude module: 'logback-classic'
+}
+
 project(":desktop") {
     apply plugin: "java-library"
 
@@ -56,6 +61,13 @@ project(":desktop") {
         compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
         // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
         testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
+//        compile('org.springframework.boot:spring-boot-starter') {
+//
+//            exclude module: "spring-boot-starter-logging"
+////            exclude module: "org.springframework.boot:spring-boot-starter-logging"
+//            exclude module: "logback-classic"
+////            exclude module: "ch.qos.logback:logback-classic"
+//        }
     }
 }
 
@@ -70,10 +82,13 @@ project(":core") {
         compile group: 'io.aeron', name: 'aeron-all', version: '1.25.1'
         // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot
         // compile group: 'org.springframework.boot', name: 'spring-boot', version: '2.2.4.RELEASE'
-        compile('org.springframework.boot:spring-boot-starter') {
-            exclude module: "spring-boot-starter-logging"
-            exclude module: "logback-classic"
-        }
+//        compile('org.springframework.boot:spring-boot') {
+//
+//            exclude module: "spring-boot-starter-logging"
+////            exclude module: "org.springframework.boot:spring-boot-starter-logging"
+//            exclude module: "logback-classic"
+////            exclude module: "ch.qos.logback:logback-classic"
+//        }
 
         // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
         compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
