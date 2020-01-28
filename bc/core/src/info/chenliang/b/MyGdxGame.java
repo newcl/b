@@ -3,6 +3,7 @@ package info.chenliang.b;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -13,15 +14,20 @@ public class MyGdxGame extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+//		img = new Texture("triangle.png");
+		img = scale("triangle.png", 512);
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
+//		batch.draw(img, Gdx.graphics.getWidth() / 2 - img.getWidth() / 2, Gdx.graphics.getHeight()/2 - img.getHeight() / 2);
 		batch.draw(img, 0, 0);
+//		batch.draw();
+
+//		Gdx.graphics.getWidth() / 2 - img.getWidth() / 2;
 		batch.end();
 	}
 	
@@ -29,5 +35,18 @@ public class MyGdxGame extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		img.dispose();
+	}
+
+	private Texture scale(String imagePath, int dimension) {
+		Pixmap source = new Pixmap(Gdx.files.internal(imagePath));
+		Pixmap target = new Pixmap(dimension, dimension, source.getFormat());
+
+		target.drawPixmap(source,
+			0, 0, source.getWidth(), source.getHeight(),
+			0, 0, target.getWidth(), target.getHeight()
+		);
+
+		Texture texture = new Texture(target);
+		return texture;
 	}
 }
