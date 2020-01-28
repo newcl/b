@@ -19,6 +19,9 @@ public class Main {
 
     public static void main(String[] args) {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+        config.width = 1024;
+        config.height = 768;
+        config.resizable = false;
         new LwjglApplication(new MyGdxGame(), config);
         SpringApplication.run(Main.class, args);
     }
