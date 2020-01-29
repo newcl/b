@@ -21,7 +21,7 @@ public class Main {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.width = 1024;
         config.height = 768;
-        config.resizable = false;
+//        config.resizable = false;
         new LwjglApplication(new MyGdxGame(), config);
         SpringApplication.run(Main.class, args);
     }
