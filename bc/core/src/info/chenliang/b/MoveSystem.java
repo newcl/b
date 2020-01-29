@@ -11,10 +11,12 @@ public class MoveSystem {
             return;
         }
 
-        Vector2 normal = direction.cpy().nor();
+//        Vector2 normal = direction.cpy().nor();
 
         float alpha = source.speed / direction.len();
+//
+//        source.getPosition().add(normal.scl(Interpolation.linear.apply(0, direction.len(), alpha)));
 
-        source.getPosition().add(normal.scl(Interpolation.linear.apply(0, direction.len(), alpha)));
+        source.getPosition().interpolate(target.getPosition(), alpha, Interpolation.linear);
     }
 }
