@@ -60,7 +60,10 @@ project(":desktop") {
         api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
         compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
         // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
-        testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
+        compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
+        // https://mvnrepository.com/artifact/log4j/log4j
+        compile group: 'log4j', name: 'log4j', version: '1.2.17'
+
 //        compile('org.springframework.boot:spring-boot-starter') {
 //
 //            exclude module: "spring-boot-starter-logging"
@@ -93,7 +96,10 @@ project(":core") {
         // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
         compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
         // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
-        testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
+        compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
+        // https://mvnrepository.com/artifact/log4j/log4j
+        compile group: 'log4j', name: 'log4j', version: '1.2.17'
+
         // https://mvnrepository.com/artifact/org.projectlombok/lombok
         compile group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
 

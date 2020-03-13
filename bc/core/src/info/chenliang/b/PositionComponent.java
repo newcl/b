@@ -1,16 +1,24 @@
 package info.chenliang.b;
 
 import com.badlogic.gdx.math.Vector2;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @Setter
 public class PositionComponent {
+  @NonNull
   Vector2 position;
+
+  @NonNull
   float rotation;
+
+
+  float speed = 5.f;
+  float rotationSpeed = 30.f;
 
   public PositionComponent(PositionComponent pos) {
     this.position = pos.position.cpy();
