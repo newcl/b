@@ -3,4 +3,4 @@
 *.log
 **/target/
 **/nohup.out
-.gradle/
+**/.gradle/

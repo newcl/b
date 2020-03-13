@@ -50,37 +50,37 @@ configurations {
 }
 
 project(":desktop") {
-    apply plugin: "java-library"
+    apply plugin: "java"
+//    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.springframework.boot'
+
+    group = 'info.chenliang.b'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = 1.8
 
 
     dependencies {
         implementation project(":core")
-        api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
         compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
         // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
         compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
         // https://mvnrepository.com/artifact/log4j/log4j
         compile group: 'log4j', name: 'log4j', version: '1.2.17'
 
-//        compile('org.springframework.boot:spring-boot-starter') {
-//
-//            exclude module: "spring-boot-starter-logging"
-////            exclude module: "org.springframework.boot:spring-boot-starter-logging"
-//            exclude module: "logback-classic"
-////            exclude module: "ch.qos.logback:logback-classic"
-//        }
+        compile('org.springframework.boot:spring-boot-starter')
     }
 }
 
 project(":core") {
-    apply plugin: "java-library"
+    apply plugin: "java"
 
 
     dependencies {
-        api "com.badlogicgames.gdx:gdx:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         // https://mvnrepository.com/artifact/io.aeron/aeron-all
         compile group: 'io.aeron', name: 'aeron-all', version: '1.25.1'
         // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot
