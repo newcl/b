@@ -1,8 +1,10 @@
 .idea/
 *.iml
 *.log
+*.class
 **/target/
 **/nohup.out
 **/.gradle/
 **/.vagrant/
-
+build/
+bs/build/

@@ -1,8 +1,11 @@
 package info.chenliang.b.battle.impl;
 
 import akka.actor.AbstractActorWithTimers;
+import akka.actor.ActorRef;
+import akka.actor.ActorSelection;
 import info.chenliang.b.battle.Battle;
 import info.chenliang.b.generated.message.MessageWrapper;
+import info.chenliang.b.service.message.ActorMessage;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.Duration;
@@ -44,5 +47,6 @@ public class BattleImpl extends AbstractActorWithTimers implements Battle {
         long timeElapsed = current - lastTick;
         log.warn("Time elapsed {} millis", timeElapsed);
         lastTick = current;
+        ActorMessage actorMessage;
     }
 }

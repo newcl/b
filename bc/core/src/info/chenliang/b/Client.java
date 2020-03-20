@@ -1,8 +1,12 @@
 package info.chenliang.b;
 
+import akka.actor.AbstractActor;
+import akka.actor.ActorSelection;
+import akka.actor.ActorSystem;
 import info.chenliang.b.generated.message.Handshake;
 import info.chenliang.b.generated.message.MessageWrapper;
 import info.chenliang.b.generated.message.Pong;
+import info.chenliang.b.service.message.ActorMessage;
 import info.chenliang.b.service.message.Address;
 import info.chenliang.b.service.message.MessageService;
 import info.chenliang.b.service.message.impl.AeronAddress;
@@ -43,18 +47,32 @@ public class Client {
 
     @PostConstruct
     public void start() {
-        subAddress = AeronAddress.builder().ip(subscriptionIp).port(subscriptionPort).streamId(subscriptionStreamId).build();
-        pubAddress = AeronAddress.builder().ip(publicationIp).port(publicationPort).streamId(publicationStreamId).build();
+//        subAddress = AeronAddress.builder().ip(subscriptionIp).port(subscriptionPort).streamId(subscriptionStreamId).build();
+//        pubAddress = AeronAddress.builder().ip(publicationIp).port(publicationPort).streamId(publicationStreamId).build();
+//
+//        messageService.receive(subAddress, this::onMessage);
+//
+//        messageService.send(pubAddress, MessageWrapper.newBuilder()
+//            .setHandshake(Handshake.newBuilder()
+//                .setSubPort(subscriptionPort)
+//                .setSubStreamId(subscriptionStreamId)
+//                .setIp("0.0.0.0")
+//                .build())
+//            .build());
 
-        messageService.receive(subAddress, this::onMessage);
+        ActorSystem actorSystem = ActorSystem.create("my");
 
-        messageService.send(pubAddress, MessageWrapper.newBuilder()
-            .setHandshake(Handshake.newBuilder()
-                .setSubPort(subscriptionPort)
-                .setSubStreamId(subscriptionStreamId)
-                .setIp("0.0.0.0")
-                .build())
-            .build());
+//        ActorSelection selection =
+//            context.actorSelection("akka://actorSystemName@10.0.0.1:25520/user/actorName");
+
+    }
+
+    static class MyActor extends AbstractActor<ActorMessage> {
+
+        @Override
+        public Receive createReceive() {
+            return null;
+        }
     }
 
     private void onMessage(String identity, MessageWrapper wrapper) {

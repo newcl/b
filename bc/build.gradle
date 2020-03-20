@@ -9,10 +9,6 @@ buildscript {
         jcenter()
         google()
     }
-    dependencies {
-        
-
-    }
 }
 
 
@@ -24,7 +20,7 @@ plugins {
 
 allprojects {
 
-    version = '1.0'
+//    version = '1.0'
     ext {
         appName = "b"
         gdxVersion = '1.9.10'
@@ -42,12 +38,17 @@ allprojects {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
     }
+
+
 }
 
 configurations {
     all*.exclude module : 'spring-boot-starter-logging'
     runtime.exclude module: 'logback-classic'
+
 }
+
+//project(':bshared').projectDir = new File("../bshared")
 
 project(":desktop") {
     apply plugin: "java"
@@ -74,11 +75,13 @@ project(":desktop") {
     }
 }
 
+
+
 project(":core") {
     apply plugin: "java"
 
-
     dependencies {
+        compile project(':bshared')
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         // https://mvnrepository.com/artifact/io.aeron/aeron-all
@@ -103,10 +106,9 @@ project(":core") {
         // https://mvnrepository.com/artifact/org.projectlombok/lombok
         compile group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
 
-        compile group: 'info.chenliang.b', name: 'bshared', version: '1.0-SNAPSHOT'
-
         compileOnly 'org.projectlombok:lombok:1.18.10'
         annotationProcessor 'org.projectlombok:lombok:1.18.10'
+        compile group: 'com.typesafe.akka', name: 'akka-actor-typed_2.13', version: '2.6.4'
 
 //        compile("org.springframework.boot:spring-boot-starter-security"){
 //            exclude module: "spring-boot-starter-logging"
