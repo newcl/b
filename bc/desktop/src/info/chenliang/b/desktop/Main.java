@@ -27,7 +27,5 @@ public class Main {
 //        config.resizable = false;
         new LwjglApplication(new MyGdxGame(), config);
         SpringApplication.run(Main.class, args);
-
-        ActorSystem actorSystem = ActorSystem.create(Client.create(), "bc");
     }
 }

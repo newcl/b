@@ -1,5 +1,11 @@
 apply plugin: "java"
 
+configurations {
+    all*.exclude module : 'spring-boot-starter-logging'
+    runtime.exclude module: 'logback-classic'
+
+}
+
 sourceCompatibility = 1.8
 sourceSets.main.java.srcDirs = [ "src/" ]
 sourceSets.main.resources.srcDirs = ["../core/assets"]
