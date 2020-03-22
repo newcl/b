@@ -1,27 +1,24 @@
 package info.chenliang.b;
 
-import akka.actor.AbstractActor;
-import akka.actor.ActorSelection;
-import akka.actor.ActorSystem;
+
+import akka.actor.typed.ActorSystem;
+import akka.actor.typed.Behavior;
+import akka.actor.typed.javadsl.AbstractBehavior;
+import akka.actor.typed.javadsl.ActorContext;
+import akka.actor.typed.javadsl.Behaviors;
+import akka.actor.typed.javadsl.Receive;
 import info.chenliang.b.generated.message.Handshake;
 import info.chenliang.b.generated.message.MessageWrapper;
 import info.chenliang.b.generated.message.Pong;
 import info.chenliang.b.service.message.ActorMessage;
 import info.chenliang.b.service.message.Address;
 import info.chenliang.b.service.message.MessageService;
-import info.chenliang.b.service.message.impl.AeronAddress;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-
-@RequiredArgsConstructor
 @Slf4j
-@Component
-public class Client {
+public class Client extends AbstractBehavior<ActorMessage> {
     @Value("${client.subPort:9900}")
     private int subscriptionPort;
 
@@ -45,7 +42,13 @@ public class Client {
 
     private Address subAddress, pubAddress;
 
-    @PostConstruct
+    public Client(ActorContext<ActorMessage> context) {
+        super(context);
+
+        context.
+    }
+
+
     public void start() {
 //        subAddress = AeronAddress.builder().ip(subscriptionIp).port(subscriptionPort).streamId(subscriptionStreamId).build();
 //        pubAddress = AeronAddress.builder().ip(publicationIp).port(publicationPort).streamId(publicationStreamId).build();
@@ -60,22 +63,47 @@ public class Client {
 //                .build())
 //            .build());
 
-        ActorSystem actorSystem = ActorSystem.create("my");
+
+
+
 
 //        ActorSelection selection =
 //            context.actorSelection("akka://actorSystemName@10.0.0.1:25520/user/actorName");
 
     }
 
-    static class MyActor extends AbstractActor<ActorMessage> {
-
-        @Override
-        public Receive createReceive() {
-            return null;
-        }
+    public static Behavior<ActorMessage> create() {
+        return Behaviors.setup(Client::new);
     }
 
-    private void onMessage(String identity, MessageWrapper wrapper) {
+
+
+    public Receive<ActorMessage> createReceive() {
+        return newReceiveBuilder()
+            .onMessage(ActorMessage.class, this::onMessage)
+            .build();
+    }
+
+    private Behavior<ActorMessage> onMessage(ActorMessage actorMessage) {
+        MessageWrapper wrapper = actorMessage.getMessageWrapper();
+        log.info("Received message from server {}", wrapper);
+        if (wrapper.hasPing()) {
+            Pong pong = Pong.newBuilder().setTime(System.currentTimeMillis()).setMessage("Pong from client").build();
+//            messageService.send(pubAddress, MessageWrapper.newBuilder().setPong(pong).build());
+            MessageWrapper messageWrapper = MessageWrapper.newBuilder()
+            .setHandshake(Handshake.newBuilder()
+                .setSubPort(subscriptionPort)
+                .setSubStreamId(subscriptionStreamId)
+                .setIp("0.0.0.0")
+                .build()).build();
+
+
+            actorMessage.getActorRef().tell(ActorMessage.builder().actorRef(getContext().getSelf()).messageWrapper(messageWrapper).build());
+        }
+        return Behaviors.same();
+    }
+
+    private void onMessage2(String identity, MessageWrapper wrapper) {
         log.info("Received message from server {}", wrapper);
         if (wrapper.hasPing()) {
             Pong pong = Pong.newBuilder().setTime(System.currentTimeMillis()).setMessage("Pong from client").build();

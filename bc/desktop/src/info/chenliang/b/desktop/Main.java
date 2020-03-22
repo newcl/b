@@ -1,7 +1,9 @@
 package info.chenliang.b.desktop;
 
+import akka.actor.typed.ActorSystem;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import info.chenliang.b.Client;
 import info.chenliang.b.MyGdxGame;
 import io.aeron.driver.MediaDriver;
 import lombok.extern.slf4j.Slf4j;
@@ -25,5 +27,7 @@ public class Main {
 //        config.resizable = false;
         new LwjglApplication(new MyGdxGame(), config);
         SpringApplication.run(Main.class, args);
+
+        ActorSystem actorSystem = ActorSystem.create(Client.create(), "bc");
     }
 }

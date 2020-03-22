@@ -5,3 +5,4 @@
 rootProject.name = 'b'
 include(':bshared')
 include(':bs')
+//include(':bc')
