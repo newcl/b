@@ -22,6 +22,9 @@ apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply plugin: 'org.springframework.boot'
 
+group = 'info.chenliang.b'
+version = '0.0.1-SNAPSHOT'
+
 repositories {
     mavenLocal()
     mavenCentral()
