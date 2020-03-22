@@ -18,16 +18,4 @@ public interface HandshakeOrBuilder extends
    * @return The subStreamId.
    */
   int getSubStreamId();
-
-  /**
-   * <code>string ip = 3;</code>
-   * @return The ip.
-   */
-  java.lang.String getIp();
-  /**
-   * <code>string ip = 3;</code>
-   * @return The bytes for ip.
-   */
-  com.google.protobuf.ByteString
-      getIpBytes();
 }

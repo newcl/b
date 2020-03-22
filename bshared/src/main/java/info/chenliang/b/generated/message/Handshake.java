@@ -21,7 +21,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Handshake() {
-    ip_ = "";
   }
 
   @java.lang.Override
@@ -62,12 +61,6 @@ private static final long serialVersionUID = 0L;
           case 16: {
 
             subStreamId_ = input.readInt32();
-            break;
-          }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            ip_ = s;
             break;
           }
           default: {
@@ -122,42 +115,6 @@ private static final long serialVersionUID = 0L;
     return subStreamId_;
   }
 
-  public static final int IP_FIELD_NUMBER = 3;
-  private volatile java.lang.Object ip_;
-  /**
-   * <code>string ip = 3;</code>
-   * @return The ip.
-   */
-  public java.lang.String getIp() {
-    java.lang.Object ref = ip_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      ip_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string ip = 3;</code>
-   * @return The bytes for ip.
-   */
-  public com.google.protobuf.ByteString
-      getIpBytes() {
-    java.lang.Object ref = ip_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      ip_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -178,9 +135,6 @@ private static final long serialVersionUID = 0L;
     if (subStreamId_ != 0) {
       output.writeInt32(2, subStreamId_);
     }
-    if (!getIpBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, ip_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -197,9 +151,6 @@ private static final long serialVersionUID = 0L;
     if (subStreamId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(2, subStreamId_);
-    }
-    if (!getIpBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, ip_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -220,8 +171,6 @@ private static final long serialVersionUID = 0L;
         != other.getSubPort()) return false;
     if (getSubStreamId()
         != other.getSubStreamId()) return false;
-    if (!getIp()
-        .equals(other.getIp())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -237,8 +186,6 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getSubPort();
     hash = (37 * hash) + SUBSTREAMID_FIELD_NUMBER;
     hash = (53 * hash) + getSubStreamId();
-    hash = (37 * hash) + IP_FIELD_NUMBER;
-    hash = (53 * hash) + getIp().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -381,8 +328,6 @@ private static final long serialVersionUID = 0L;
 
       subStreamId_ = 0;
 
-      ip_ = "";
-
       return this;
     }
 
@@ -411,7 +356,6 @@ private static final long serialVersionUID = 0L;
       info.chenliang.b.generated.message.Handshake result = new info.chenliang.b.generated.message.Handshake(this);
       result.subPort_ = subPort_;
       result.subStreamId_ = subStreamId_;
-      result.ip_ = ip_;
       onBuilt();
       return result;
     }
@@ -465,10 +409,6 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getSubStreamId() != 0) {
         setSubStreamId(other.getSubStreamId());
-      }
-      if (!other.getIp().isEmpty()) {
-        ip_ = other.ip_;
-        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -555,82 +495,6 @@ private static final long serialVersionUID = 0L;
     public Builder clearSubStreamId() {
       
       subStreamId_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object ip_ = "";
-    /**
-     * <code>string ip = 3;</code>
-     * @return The ip.
-     */
-    public java.lang.String getIp() {
-      java.lang.Object ref = ip_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        ip_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string ip = 3;</code>
-     * @return The bytes for ip.
-     */
-    public com.google.protobuf.ByteString
-        getIpBytes() {
-      java.lang.Object ref = ip_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        ip_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string ip = 3;</code>
-     * @param value The ip to set.
-     * @return This builder for chaining.
-     */
-    public Builder setIp(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      ip_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string ip = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearIp() {
-      
-      ip_ = getDefaultInstance().getIp();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string ip = 3;</code>
-     * @param value The bytes for ip to set.
-     * @return This builder for chaining.
-     */
-    public Builder setIpBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      ip_ = value;
       onChanged();
       return this;
     }

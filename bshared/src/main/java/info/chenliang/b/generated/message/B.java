@@ -53,17 +53,17 @@ public final class B {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\007b.proto\"=\n\tHandshake\022\017\n\007subPort\030\001 \001(\005\022" +
-      "\023\n\013subStreamId\030\002 \001(\005\022\n\n\002ip\030\003 \001(\t\" \n\010Posi" +
-      "tion\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\"-\n\016MoveToPosi" +
-      "tion\022\033\n\010position\030\001 \001(\0132\t.Position\"%\n\004Pin" +
-      "g\022\014\n\004time\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\"%\n\004Pong" +
-      "\022\014\n\004time\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\"\211\001\n\016Mess" +
-      "ageWrapper\022\037\n\thandshake\030\001 \001(\0132\n.Handshak" +
-      "eH\000\022!\n\006action\030\002 \001(\0132\017.MoveToPositionH\000\022\025" +
-      "\n\004ping\030\003 \001(\0132\005.PingH\000\022\025\n\004pong\030\004 \001(\0132\005.Po" +
-      "ngH\000B\005\n\003msgB&\n\"info.chenliang.b.generate" +
-      "d.messageP\001b\006proto3"
+      "\n\007b.proto\"1\n\tHandshake\022\017\n\007subPort\030\001 \001(\005\022" +
+      "\023\n\013subStreamId\030\002 \001(\005\" \n\010Position\022\t\n\001x\030\001 " +
+      "\001(\002\022\t\n\001y\030\002 \001(\002\"-\n\016MoveToPosition\022\033\n\010posi" +
+      "tion\030\001 \001(\0132\t.Position\"%\n\004Ping\022\014\n\004time\030\001 " +
+      "\001(\003\022\017\n\007message\030\002 \001(\t\"%\n\004Pong\022\014\n\004time\030\001 \001" +
+      "(\003\022\017\n\007message\030\002 \001(\t\"\211\001\n\016MessageWrapper\022\037" +
+      "\n\thandshake\030\001 \001(\0132\n.HandshakeH\000\022!\n\006actio" +
+      "n\030\002 \001(\0132\017.MoveToPositionH\000\022\025\n\004ping\030\003 \001(\013" +
+      "2\005.PingH\000\022\025\n\004pong\030\004 \001(\0132\005.PongH\000B\005\n\003msgB" +
+      "&\n\"info.chenliang.b.generated.messageP\001b" +
+      "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -74,7 +74,7 @@ public final class B {
     internal_static_Handshake_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Handshake_descriptor,
-        new java.lang.String[] { "SubPort", "SubStreamId", "Ip", });
+        new java.lang.String[] { "SubPort", "SubStreamId", });
     internal_static_Position_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Position_fieldAccessorTable = new

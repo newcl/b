@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -60,6 +61,11 @@ public class BattleServiceImpl implements BattleService {
         log.info("BattleServiceImpl init done");
     }
 
+    // in the format of ip:port
+    private String ipFromSourceIdentity(String sourceIdentity) {
+        return Optional.of(sourceIdentity).filter(s -> s.contains(":")).map(s -> s.substring(0, s.indexOf(":"))).orElseThrow(IllegalArgumentException::new);
+    }
+
     void onMessage(String identity, MessageWrapper wrapper) {
 
         log.info("Client message {}", wrapper);
@@ -68,7 +74,7 @@ public class BattleServiceImpl implements BattleService {
             Handshake handshake = wrapper.getHandshake();
 
             Address subAddress = AeronAddress.builder()
-                .ip(handshake.getIp())
+                .ip(ipFromSourceIdentity(identity))
                 .port(handshake.getSubPort())
                 .streamId(handshake.getSubStreamId()).build();
             playerService.getPlayer(identity).setSubscriptionAddress(subAddress);

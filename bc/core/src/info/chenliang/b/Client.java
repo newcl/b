@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.net.NetworkInterface;
 
 @Slf4j
 @Component
@@ -62,7 +63,6 @@ public class Client {
             .setHandshake(Handshake.newBuilder()
                 .setSubPort(subscriptionPort)
                 .setSubStreamId(subscriptionStreamId)
-                .setIp("0.0.0.0")
                 .build())
             .build());
     }

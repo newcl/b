@@ -41,7 +41,6 @@ public class SubscriptionReader {
 
             MessageWrapper wrapper = MessageWrapper.parseFrom(bytes);
             Image image = subscription.imageBySessionId(header.sessionId());
-
             messageListener.onMessage(image.sourceIdentity(), wrapper);
         } catch (Exception e) {
             log.error("Parse message error sessionId={} streamId={}", header.sessionId(), header.streamId(), e);
