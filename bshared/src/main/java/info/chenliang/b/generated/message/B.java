@@ -40,6 +40,21 @@ public final class B {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Pong_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Speed_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Speed_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_State_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_State_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_States_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_States_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MessageWrapper_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -53,28 +68,40 @@ public final class B {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\007b.proto\"1\n\tHandshake\022\017\n\007subPort\030\001 \001(\005\022" +
-      "\023\n\013subStreamId\030\002 \001(\005\" \n\010Position\022\t\n\001x\030\001 " +
-      "\001(\002\022\t\n\001y\030\002 \001(\002\"-\n\016MoveToPosition\022\033\n\010posi" +
-      "tion\030\001 \001(\0132\t.Position\"%\n\004Ping\022\014\n\004time\030\001 " +
-      "\001(\003\022\017\n\007message\030\002 \001(\t\"%\n\004Pong\022\014\n\004time\030\001 \001" +
-      "(\003\022\017\n\007message\030\002 \001(\t\"\211\001\n\016MessageWrapper\022\037" +
-      "\n\thandshake\030\001 \001(\0132\n.HandshakeH\000\022!\n\006actio" +
-      "n\030\002 \001(\0132\017.MoveToPositionH\000\022\025\n\004ping\030\003 \001(\013" +
-      "2\005.PingH\000\022\025\n\004pong\030\004 \001(\0132\005.PongH\000B\005\n\003msgB" +
-      "&\n\"info.chenliang.b.generated.messageP\001b" +
-      "\006proto3"
+      "\n\007b.proto\"=\n\tHandshake\022\017\n\007subPort\030\001 \001(\005\022" +
+      "\023\n\013subStreamId\030\002 \001(\005\022\n\n\002id\030\003 \001(\t\" \n\010Posi" +
+      "tion\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\"-\n\016MoveToPosi" +
+      "tion\022\033\n\010position\030\001 \001(\0132\t.Position\"%\n\004Pin" +
+      "g\022\014\n\004time\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\"%\n\004Pong" +
+      "\022\014\n\004time\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\"*\n\005Speed" +
+      "\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\013\n\003rot\030\003 \001(\002\"G\n\005S" +
+      "tate\022\n\n\002id\030\001 \001(\t\022\033\n\010position\030\002 \001(\0132\t.Pos" +
+      "ition\022\025\n\005speed\030\003 \001(\0132\006.Speed\" \n\006States\022\026" +
+      "\n\006states\030\001 \003(\0132\006.State\"\201\001\n\016MessageWrappe" +
+      "r\022\037\n\thandshake\030\001 \001(\0132\n.HandshakeH\000\022\025\n\004pi" +
+      "ng\030\003 \001(\0132\005.PingH\000\022\025\n\004pong\030\004 \001(\0132\005.PongH\000" +
+      "\022\031\n\006states\030\005 \001(\0132\007.StatesH\000B\005\n\003msgB&\n\"in" +
+      "fo.chenliang.b.generated.messageP\001b\006prot" +
+      "o3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
+    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
+    com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
+        }, assigner);
     internal_static_Handshake_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_Handshake_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Handshake_descriptor,
-        new java.lang.String[] { "SubPort", "SubStreamId", });
+        new java.lang.String[] { "SubPort", "SubStreamId", "Id", });
     internal_static_Position_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Position_fieldAccessorTable = new
@@ -99,12 +126,30 @@ public final class B {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Pong_descriptor,
         new java.lang.String[] { "Time", "Message", });
-    internal_static_MessageWrapper_descriptor =
+    internal_static_Speed_descriptor =
       getDescriptor().getMessageTypes().get(5);
+    internal_static_Speed_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Speed_descriptor,
+        new java.lang.String[] { "X", "Y", "Rot", });
+    internal_static_State_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_State_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_State_descriptor,
+        new java.lang.String[] { "Id", "Position", "Speed", });
+    internal_static_States_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_States_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_States_descriptor,
+        new java.lang.String[] { "States", });
+    internal_static_MessageWrapper_descriptor =
+      getDescriptor().getMessageTypes().get(8);
     internal_static_MessageWrapper_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_MessageWrapper_descriptor,
-        new java.lang.String[] { "Handshake", "Action", "Ping", "Pong", "Msg", });
+        new java.lang.String[] { "Handshake", "Ping", "Pong", "States", "Msg", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

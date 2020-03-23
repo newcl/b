@@ -9,12 +9,10 @@ public interface MessageWrapperOrBuilder extends
 
   /**
    * <code>.Handshake handshake = 1;</code>
-   * @return Whether the handshake field is set.
    */
   boolean hasHandshake();
   /**
    * <code>.Handshake handshake = 1;</code>
-   * @return The handshake.
    */
   info.chenliang.b.generated.message.Handshake getHandshake();
   /**
@@ -23,28 +21,11 @@ public interface MessageWrapperOrBuilder extends
   info.chenliang.b.generated.message.HandshakeOrBuilder getHandshakeOrBuilder();
 
   /**
-   * <code>.MoveToPosition action = 2;</code>
-   * @return Whether the action field is set.
-   */
-  boolean hasAction();
-  /**
-   * <code>.MoveToPosition action = 2;</code>
-   * @return The action.
-   */
-  info.chenliang.b.generated.message.MoveToPosition getAction();
-  /**
-   * <code>.MoveToPosition action = 2;</code>
-   */
-  info.chenliang.b.generated.message.MoveToPositionOrBuilder getActionOrBuilder();
-
-  /**
    * <code>.Ping ping = 3;</code>
-   * @return Whether the ping field is set.
    */
   boolean hasPing();
   /**
    * <code>.Ping ping = 3;</code>
-   * @return The ping.
    */
   info.chenliang.b.generated.message.Ping getPing();
   /**
@@ -54,18 +35,29 @@ public interface MessageWrapperOrBuilder extends
 
   /**
    * <code>.Pong pong = 4;</code>
-   * @return Whether the pong field is set.
    */
   boolean hasPong();
   /**
    * <code>.Pong pong = 4;</code>
-   * @return The pong.
    */
   info.chenliang.b.generated.message.Pong getPong();
   /**
    * <code>.Pong pong = 4;</code>
    */
   info.chenliang.b.generated.message.PongOrBuilder getPongOrBuilder();
+
+  /**
+   * <code>.States states = 5;</code>
+   */
+  boolean hasStates();
+  /**
+   * <code>.States states = 5;</code>
+   */
+  info.chenliang.b.generated.message.States getStates();
+  /**
+   * <code>.States states = 5;</code>
+   */
+  info.chenliang.b.generated.message.StatesOrBuilder getStatesOrBuilder();
 
   public info.chenliang.b.generated.message.MessageWrapper.MsgCase getMsgCase();
 }

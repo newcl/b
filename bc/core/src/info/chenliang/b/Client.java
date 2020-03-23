@@ -1,16 +1,9 @@
 package info.chenliang.b;
 
 
-import akka.actor.typed.ActorSystem;
-import akka.actor.typed.Behavior;
-import akka.actor.typed.javadsl.AbstractBehavior;
-import akka.actor.typed.javadsl.ActorContext;
-import akka.actor.typed.javadsl.Behaviors;
-import akka.actor.typed.javadsl.Receive;
 import info.chenliang.b.generated.message.Handshake;
 import info.chenliang.b.generated.message.MessageWrapper;
 import info.chenliang.b.generated.message.Pong;
-import info.chenliang.b.service.message.ActorMessage;
 import info.chenliang.b.service.message.Address;
 import info.chenliang.b.service.message.MessageService;
 import info.chenliang.b.service.message.impl.AeronAddress;
@@ -20,7 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.net.NetworkInterface;
 
 @Slf4j
 @Component
@@ -43,10 +35,17 @@ public class Client {
     @Value("${client.pubIp:0.0.0.0}")
     private String publicationIp;
 
+    @Value("${client.id:}")
+    private String id;
+
     @Autowired
     MessageService messageService;
 
+    @Autowired
+    StatesManager statesManager;
+
     private Address subAddress, pubAddress;
+
 
     public Client() {
 
@@ -63,15 +62,18 @@ public class Client {
             .setHandshake(Handshake.newBuilder()
                 .setSubPort(subscriptionPort)
                 .setSubStreamId(subscriptionStreamId)
+                .setId(id)
                 .build())
             .build());
     }
 
     private void onMessage(String identity, MessageWrapper wrapper) {
-        log.info("Received message from server {}", wrapper);
+//        log.info("Received message from server {}", wrapper);
         if (wrapper.hasPing()) {
             Pong pong = Pong.newBuilder().setTime(System.currentTimeMillis()).setMessage("Pong from client").build();
             messageService.send(pubAddress, MessageWrapper.newBuilder().setPong(pong).build());
+        } else if(wrapper.hasStates()) {
+            statesManager.onStates(wrapper.getStates());
         }
     }
 }

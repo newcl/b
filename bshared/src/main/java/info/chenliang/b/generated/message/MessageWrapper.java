@@ -19,13 +19,6 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
-    return new MessageWrapper();
-  }
-
-  @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
     return this.unknownFields;
@@ -38,6 +31,7 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
+    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -60,20 +54,6 @@ private static final long serialVersionUID = 0L;
               msg_ = subBuilder.buildPartial();
             }
             msgCase_ = 1;
-            break;
-          }
-          case 18: {
-            info.chenliang.b.generated.message.MoveToPosition.Builder subBuilder = null;
-            if (msgCase_ == 2) {
-              subBuilder = ((info.chenliang.b.generated.message.MoveToPosition) msg_).toBuilder();
-            }
-            msg_ =
-                input.readMessage(info.chenliang.b.generated.message.MoveToPosition.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((info.chenliang.b.generated.message.MoveToPosition) msg_);
-              msg_ = subBuilder.buildPartial();
-            }
-            msgCase_ = 2;
             break;
           }
           case 26: {
@@ -104,8 +84,22 @@ private static final long serialVersionUID = 0L;
             msgCase_ = 4;
             break;
           }
+          case 42: {
+            info.chenliang.b.generated.message.States.Builder subBuilder = null;
+            if (msgCase_ == 5) {
+              subBuilder = ((info.chenliang.b.generated.message.States) msg_).toBuilder();
+            }
+            msg_ =
+                input.readMessage(info.chenliang.b.generated.message.States.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((info.chenliang.b.generated.message.States) msg_);
+              msg_ = subBuilder.buildPartial();
+            }
+            msgCase_ = 5;
+            break;
+          }
           default: {
-            if (!parseUnknownField(
+            if (!parseUnknownFieldProto3(
                 input, unknownFields, extensionRegistry, tag)) {
               done = true;
             }
@@ -139,20 +133,17 @@ private static final long serialVersionUID = 0L;
   private int msgCase_ = 0;
   private java.lang.Object msg_;
   public enum MsgCase
-      implements com.google.protobuf.Internal.EnumLite,
-          com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      implements com.google.protobuf.Internal.EnumLite {
     HANDSHAKE(1),
-    ACTION(2),
     PING(3),
     PONG(4),
+    STATES(5),
     MSG_NOT_SET(0);
     private final int value;
     private MsgCase(int value) {
       this.value = value;
     }
     /**
-     * @param value The number of the enum to look for.
-     * @return The enum associated with the given number.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
@@ -163,9 +154,9 @@ private static final long serialVersionUID = 0L;
     public static MsgCase forNumber(int value) {
       switch (value) {
         case 1: return HANDSHAKE;
-        case 2: return ACTION;
         case 3: return PING;
         case 4: return PONG;
+        case 5: return STATES;
         case 0: return MSG_NOT_SET;
         default: return null;
       }
@@ -184,14 +175,12 @@ private static final long serialVersionUID = 0L;
   public static final int HANDSHAKE_FIELD_NUMBER = 1;
   /**
    * <code>.Handshake handshake = 1;</code>
-   * @return Whether the handshake field is set.
    */
   public boolean hasHandshake() {
     return msgCase_ == 1;
   }
   /**
    * <code>.Handshake handshake = 1;</code>
-   * @return The handshake.
    */
   public info.chenliang.b.generated.message.Handshake getHandshake() {
     if (msgCase_ == 1) {
@@ -209,45 +198,15 @@ private static final long serialVersionUID = 0L;
     return info.chenliang.b.generated.message.Handshake.getDefaultInstance();
   }
 
-  public static final int ACTION_FIELD_NUMBER = 2;
-  /**
-   * <code>.MoveToPosition action = 2;</code>
-   * @return Whether the action field is set.
-   */
-  public boolean hasAction() {
-    return msgCase_ == 2;
-  }
-  /**
-   * <code>.MoveToPosition action = 2;</code>
-   * @return The action.
-   */
-  public info.chenliang.b.generated.message.MoveToPosition getAction() {
-    if (msgCase_ == 2) {
-       return (info.chenliang.b.generated.message.MoveToPosition) msg_;
-    }
-    return info.chenliang.b.generated.message.MoveToPosition.getDefaultInstance();
-  }
-  /**
-   * <code>.MoveToPosition action = 2;</code>
-   */
-  public info.chenliang.b.generated.message.MoveToPositionOrBuilder getActionOrBuilder() {
-    if (msgCase_ == 2) {
-       return (info.chenliang.b.generated.message.MoveToPosition) msg_;
-    }
-    return info.chenliang.b.generated.message.MoveToPosition.getDefaultInstance();
-  }
-
   public static final int PING_FIELD_NUMBER = 3;
   /**
    * <code>.Ping ping = 3;</code>
-   * @return Whether the ping field is set.
    */
   public boolean hasPing() {
     return msgCase_ == 3;
   }
   /**
    * <code>.Ping ping = 3;</code>
-   * @return The ping.
    */
   public info.chenliang.b.generated.message.Ping getPing() {
     if (msgCase_ == 3) {
@@ -268,14 +227,12 @@ private static final long serialVersionUID = 0L;
   public static final int PONG_FIELD_NUMBER = 4;
   /**
    * <code>.Pong pong = 4;</code>
-   * @return Whether the pong field is set.
    */
   public boolean hasPong() {
     return msgCase_ == 4;
   }
   /**
    * <code>.Pong pong = 4;</code>
-   * @return The pong.
    */
   public info.chenliang.b.generated.message.Pong getPong() {
     if (msgCase_ == 4) {
@@ -291,6 +248,32 @@ private static final long serialVersionUID = 0L;
        return (info.chenliang.b.generated.message.Pong) msg_;
     }
     return info.chenliang.b.generated.message.Pong.getDefaultInstance();
+  }
+
+  public static final int STATES_FIELD_NUMBER = 5;
+  /**
+   * <code>.States states = 5;</code>
+   */
+  public boolean hasStates() {
+    return msgCase_ == 5;
+  }
+  /**
+   * <code>.States states = 5;</code>
+   */
+  public info.chenliang.b.generated.message.States getStates() {
+    if (msgCase_ == 5) {
+       return (info.chenliang.b.generated.message.States) msg_;
+    }
+    return info.chenliang.b.generated.message.States.getDefaultInstance();
+  }
+  /**
+   * <code>.States states = 5;</code>
+   */
+  public info.chenliang.b.generated.message.StatesOrBuilder getStatesOrBuilder() {
+    if (msgCase_ == 5) {
+       return (info.chenliang.b.generated.message.States) msg_;
+    }
+    return info.chenliang.b.generated.message.States.getDefaultInstance();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -310,14 +293,14 @@ private static final long serialVersionUID = 0L;
     if (msgCase_ == 1) {
       output.writeMessage(1, (info.chenliang.b.generated.message.Handshake) msg_);
     }
-    if (msgCase_ == 2) {
-      output.writeMessage(2, (info.chenliang.b.generated.message.MoveToPosition) msg_);
-    }
     if (msgCase_ == 3) {
       output.writeMessage(3, (info.chenliang.b.generated.message.Ping) msg_);
     }
     if (msgCase_ == 4) {
       output.writeMessage(4, (info.chenliang.b.generated.message.Pong) msg_);
+    }
+    if (msgCase_ == 5) {
+      output.writeMessage(5, (info.chenliang.b.generated.message.States) msg_);
     }
     unknownFields.writeTo(output);
   }
@@ -332,10 +315,6 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, (info.chenliang.b.generated.message.Handshake) msg_);
     }
-    if (msgCase_ == 2) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, (info.chenliang.b.generated.message.MoveToPosition) msg_);
-    }
     if (msgCase_ == 3) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(3, (info.chenliang.b.generated.message.Ping) msg_);
@@ -343,6 +322,10 @@ private static final long serialVersionUID = 0L;
     if (msgCase_ == 4) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, (info.chenliang.b.generated.message.Pong) msg_);
+    }
+    if (msgCase_ == 5) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(5, (info.chenliang.b.generated.message.States) msg_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -359,29 +342,32 @@ private static final long serialVersionUID = 0L;
     }
     info.chenliang.b.generated.message.MessageWrapper other = (info.chenliang.b.generated.message.MessageWrapper) obj;
 
-    if (!getMsgCase().equals(other.getMsgCase())) return false;
+    boolean result = true;
+    result = result && getMsgCase().equals(
+        other.getMsgCase());
+    if (!result) return false;
     switch (msgCase_) {
       case 1:
-        if (!getHandshake()
-            .equals(other.getHandshake())) return false;
-        break;
-      case 2:
-        if (!getAction()
-            .equals(other.getAction())) return false;
+        result = result && getHandshake()
+            .equals(other.getHandshake());
         break;
       case 3:
-        if (!getPing()
-            .equals(other.getPing())) return false;
+        result = result && getPing()
+            .equals(other.getPing());
         break;
       case 4:
-        if (!getPong()
-            .equals(other.getPong())) return false;
+        result = result && getPong()
+            .equals(other.getPong());
+        break;
+      case 5:
+        result = result && getStates()
+            .equals(other.getStates());
         break;
       case 0:
       default:
     }
-    if (!unknownFields.equals(other.unknownFields)) return false;
-    return true;
+    result = result && unknownFields.equals(other.unknownFields);
+    return result;
   }
 
   @java.lang.Override
@@ -396,10 +382,6 @@ private static final long serialVersionUID = 0L;
         hash = (37 * hash) + HANDSHAKE_FIELD_NUMBER;
         hash = (53 * hash) + getHandshake().hashCode();
         break;
-      case 2:
-        hash = (37 * hash) + ACTION_FIELD_NUMBER;
-        hash = (53 * hash) + getAction().hashCode();
-        break;
       case 3:
         hash = (37 * hash) + PING_FIELD_NUMBER;
         hash = (53 * hash) + getPing().hashCode();
@@ -407,6 +389,10 @@ private static final long serialVersionUID = 0L;
       case 4:
         hash = (37 * hash) + PONG_FIELD_NUMBER;
         hash = (53 * hash) + getPong().hashCode();
+        break;
+      case 5:
+        hash = (37 * hash) + STATES_FIELD_NUMBER;
+        hash = (53 * hash) + getStates().hashCode();
         break;
       case 0:
       default:
@@ -579,13 +565,6 @@ private static final long serialVersionUID = 0L;
           result.msg_ = handshakeBuilder_.build();
         }
       }
-      if (msgCase_ == 2) {
-        if (actionBuilder_ == null) {
-          result.msg_ = msg_;
-        } else {
-          result.msg_ = actionBuilder_.build();
-        }
-      }
       if (msgCase_ == 3) {
         if (pingBuilder_ == null) {
           result.msg_ = msg_;
@@ -600,6 +579,13 @@ private static final long serialVersionUID = 0L;
           result.msg_ = pongBuilder_.build();
         }
       }
+      if (msgCase_ == 5) {
+        if (statesBuilder_ == null) {
+          result.msg_ = msg_;
+        } else {
+          result.msg_ = statesBuilder_.build();
+        }
+      }
       result.msgCase_ = msgCase_;
       onBuilt();
       return result;
@@ -607,35 +593,35 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public Builder clone() {
-      return super.clone();
+      return (Builder) super.clone();
     }
     @java.lang.Override
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return super.setField(field, value);
+      return (Builder) super.setField(field, value);
     }
     @java.lang.Override
     public Builder clearField(
         com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return super.clearField(field);
+      return (Builder) super.clearField(field);
     }
     @java.lang.Override
     public Builder clearOneof(
         com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return super.clearOneof(oneof);
+      return (Builder) super.clearOneof(oneof);
     }
     @java.lang.Override
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         int index, java.lang.Object value) {
-      return super.setRepeatedField(field, index, value);
+      return (Builder) super.setRepeatedField(field, index, value);
     }
     @java.lang.Override
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return super.addRepeatedField(field, value);
+      return (Builder) super.addRepeatedField(field, value);
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -654,16 +640,16 @@ private static final long serialVersionUID = 0L;
           mergeHandshake(other.getHandshake());
           break;
         }
-        case ACTION: {
-          mergeAction(other.getAction());
-          break;
-        }
         case PING: {
           mergePing(other.getPing());
           break;
         }
         case PONG: {
           mergePong(other.getPong());
+          break;
+        }
+        case STATES: {
+          mergeStates(other.getStates());
           break;
         }
         case MSG_NOT_SET: {
@@ -718,14 +704,12 @@ private static final long serialVersionUID = 0L;
         info.chenliang.b.generated.message.Handshake, info.chenliang.b.generated.message.Handshake.Builder, info.chenliang.b.generated.message.HandshakeOrBuilder> handshakeBuilder_;
     /**
      * <code>.Handshake handshake = 1;</code>
-     * @return Whether the handshake field is set.
      */
     public boolean hasHandshake() {
       return msgCase_ == 1;
     }
     /**
      * <code>.Handshake handshake = 1;</code>
-     * @return The handshake.
      */
     public info.chenliang.b.generated.message.Handshake getHandshake() {
       if (handshakeBuilder_ == null) {
@@ -853,155 +837,15 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        info.chenliang.b.generated.message.MoveToPosition, info.chenliang.b.generated.message.MoveToPosition.Builder, info.chenliang.b.generated.message.MoveToPositionOrBuilder> actionBuilder_;
-    /**
-     * <code>.MoveToPosition action = 2;</code>
-     * @return Whether the action field is set.
-     */
-    public boolean hasAction() {
-      return msgCase_ == 2;
-    }
-    /**
-     * <code>.MoveToPosition action = 2;</code>
-     * @return The action.
-     */
-    public info.chenliang.b.generated.message.MoveToPosition getAction() {
-      if (actionBuilder_ == null) {
-        if (msgCase_ == 2) {
-          return (info.chenliang.b.generated.message.MoveToPosition) msg_;
-        }
-        return info.chenliang.b.generated.message.MoveToPosition.getDefaultInstance();
-      } else {
-        if (msgCase_ == 2) {
-          return actionBuilder_.getMessage();
-        }
-        return info.chenliang.b.generated.message.MoveToPosition.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.MoveToPosition action = 2;</code>
-     */
-    public Builder setAction(info.chenliang.b.generated.message.MoveToPosition value) {
-      if (actionBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        msg_ = value;
-        onChanged();
-      } else {
-        actionBuilder_.setMessage(value);
-      }
-      msgCase_ = 2;
-      return this;
-    }
-    /**
-     * <code>.MoveToPosition action = 2;</code>
-     */
-    public Builder setAction(
-        info.chenliang.b.generated.message.MoveToPosition.Builder builderForValue) {
-      if (actionBuilder_ == null) {
-        msg_ = builderForValue.build();
-        onChanged();
-      } else {
-        actionBuilder_.setMessage(builderForValue.build());
-      }
-      msgCase_ = 2;
-      return this;
-    }
-    /**
-     * <code>.MoveToPosition action = 2;</code>
-     */
-    public Builder mergeAction(info.chenliang.b.generated.message.MoveToPosition value) {
-      if (actionBuilder_ == null) {
-        if (msgCase_ == 2 &&
-            msg_ != info.chenliang.b.generated.message.MoveToPosition.getDefaultInstance()) {
-          msg_ = info.chenliang.b.generated.message.MoveToPosition.newBuilder((info.chenliang.b.generated.message.MoveToPosition) msg_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          msg_ = value;
-        }
-        onChanged();
-      } else {
-        if (msgCase_ == 2) {
-          actionBuilder_.mergeFrom(value);
-        }
-        actionBuilder_.setMessage(value);
-      }
-      msgCase_ = 2;
-      return this;
-    }
-    /**
-     * <code>.MoveToPosition action = 2;</code>
-     */
-    public Builder clearAction() {
-      if (actionBuilder_ == null) {
-        if (msgCase_ == 2) {
-          msgCase_ = 0;
-          msg_ = null;
-          onChanged();
-        }
-      } else {
-        if (msgCase_ == 2) {
-          msgCase_ = 0;
-          msg_ = null;
-        }
-        actionBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.MoveToPosition action = 2;</code>
-     */
-    public info.chenliang.b.generated.message.MoveToPosition.Builder getActionBuilder() {
-      return getActionFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.MoveToPosition action = 2;</code>
-     */
-    public info.chenliang.b.generated.message.MoveToPositionOrBuilder getActionOrBuilder() {
-      if ((msgCase_ == 2) && (actionBuilder_ != null)) {
-        return actionBuilder_.getMessageOrBuilder();
-      } else {
-        if (msgCase_ == 2) {
-          return (info.chenliang.b.generated.message.MoveToPosition) msg_;
-        }
-        return info.chenliang.b.generated.message.MoveToPosition.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.MoveToPosition action = 2;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        info.chenliang.b.generated.message.MoveToPosition, info.chenliang.b.generated.message.MoveToPosition.Builder, info.chenliang.b.generated.message.MoveToPositionOrBuilder> 
-        getActionFieldBuilder() {
-      if (actionBuilder_ == null) {
-        if (!(msgCase_ == 2)) {
-          msg_ = info.chenliang.b.generated.message.MoveToPosition.getDefaultInstance();
-        }
-        actionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            info.chenliang.b.generated.message.MoveToPosition, info.chenliang.b.generated.message.MoveToPosition.Builder, info.chenliang.b.generated.message.MoveToPositionOrBuilder>(
-                (info.chenliang.b.generated.message.MoveToPosition) msg_,
-                getParentForChildren(),
-                isClean());
-        msg_ = null;
-      }
-      msgCase_ = 2;
-      onChanged();;
-      return actionBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
         info.chenliang.b.generated.message.Ping, info.chenliang.b.generated.message.Ping.Builder, info.chenliang.b.generated.message.PingOrBuilder> pingBuilder_;
     /**
      * <code>.Ping ping = 3;</code>
-     * @return Whether the ping field is set.
      */
     public boolean hasPing() {
       return msgCase_ == 3;
     }
     /**
      * <code>.Ping ping = 3;</code>
-     * @return The ping.
      */
     public info.chenliang.b.generated.message.Ping getPing() {
       if (pingBuilder_ == null) {
@@ -1132,14 +976,12 @@ private static final long serialVersionUID = 0L;
         info.chenliang.b.generated.message.Pong, info.chenliang.b.generated.message.Pong.Builder, info.chenliang.b.generated.message.PongOrBuilder> pongBuilder_;
     /**
      * <code>.Pong pong = 4;</code>
-     * @return Whether the pong field is set.
      */
     public boolean hasPong() {
       return msgCase_ == 4;
     }
     /**
      * <code>.Pong pong = 4;</code>
-     * @return The pong.
      */
     public info.chenliang.b.generated.message.Pong getPong() {
       if (pongBuilder_ == null) {
@@ -1265,10 +1107,146 @@ private static final long serialVersionUID = 0L;
       onChanged();;
       return pongBuilder_;
     }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        info.chenliang.b.generated.message.States, info.chenliang.b.generated.message.States.Builder, info.chenliang.b.generated.message.StatesOrBuilder> statesBuilder_;
+    /**
+     * <code>.States states = 5;</code>
+     */
+    public boolean hasStates() {
+      return msgCase_ == 5;
+    }
+    /**
+     * <code>.States states = 5;</code>
+     */
+    public info.chenliang.b.generated.message.States getStates() {
+      if (statesBuilder_ == null) {
+        if (msgCase_ == 5) {
+          return (info.chenliang.b.generated.message.States) msg_;
+        }
+        return info.chenliang.b.generated.message.States.getDefaultInstance();
+      } else {
+        if (msgCase_ == 5) {
+          return statesBuilder_.getMessage();
+        }
+        return info.chenliang.b.generated.message.States.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.States states = 5;</code>
+     */
+    public Builder setStates(info.chenliang.b.generated.message.States value) {
+      if (statesBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        msg_ = value;
+        onChanged();
+      } else {
+        statesBuilder_.setMessage(value);
+      }
+      msgCase_ = 5;
+      return this;
+    }
+    /**
+     * <code>.States states = 5;</code>
+     */
+    public Builder setStates(
+        info.chenliang.b.generated.message.States.Builder builderForValue) {
+      if (statesBuilder_ == null) {
+        msg_ = builderForValue.build();
+        onChanged();
+      } else {
+        statesBuilder_.setMessage(builderForValue.build());
+      }
+      msgCase_ = 5;
+      return this;
+    }
+    /**
+     * <code>.States states = 5;</code>
+     */
+    public Builder mergeStates(info.chenliang.b.generated.message.States value) {
+      if (statesBuilder_ == null) {
+        if (msgCase_ == 5 &&
+            msg_ != info.chenliang.b.generated.message.States.getDefaultInstance()) {
+          msg_ = info.chenliang.b.generated.message.States.newBuilder((info.chenliang.b.generated.message.States) msg_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          msg_ = value;
+        }
+        onChanged();
+      } else {
+        if (msgCase_ == 5) {
+          statesBuilder_.mergeFrom(value);
+        }
+        statesBuilder_.setMessage(value);
+      }
+      msgCase_ = 5;
+      return this;
+    }
+    /**
+     * <code>.States states = 5;</code>
+     */
+    public Builder clearStates() {
+      if (statesBuilder_ == null) {
+        if (msgCase_ == 5) {
+          msgCase_ = 0;
+          msg_ = null;
+          onChanged();
+        }
+      } else {
+        if (msgCase_ == 5) {
+          msgCase_ = 0;
+          msg_ = null;
+        }
+        statesBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.States states = 5;</code>
+     */
+    public info.chenliang.b.generated.message.States.Builder getStatesBuilder() {
+      return getStatesFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.States states = 5;</code>
+     */
+    public info.chenliang.b.generated.message.StatesOrBuilder getStatesOrBuilder() {
+      if ((msgCase_ == 5) && (statesBuilder_ != null)) {
+        return statesBuilder_.getMessageOrBuilder();
+      } else {
+        if (msgCase_ == 5) {
+          return (info.chenliang.b.generated.message.States) msg_;
+        }
+        return info.chenliang.b.generated.message.States.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.States states = 5;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        info.chenliang.b.generated.message.States, info.chenliang.b.generated.message.States.Builder, info.chenliang.b.generated.message.StatesOrBuilder> 
+        getStatesFieldBuilder() {
+      if (statesBuilder_ == null) {
+        if (!(msgCase_ == 5)) {
+          msg_ = info.chenliang.b.generated.message.States.getDefaultInstance();
+        }
+        statesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            info.chenliang.b.generated.message.States, info.chenliang.b.generated.message.States.Builder, info.chenliang.b.generated.message.StatesOrBuilder>(
+                (info.chenliang.b.generated.message.States) msg_,
+                getParentForChildren(),
+                isClean());
+        msg_ = null;
+      }
+      msgCase_ = 5;
+      onChanged();;
+      return statesBuilder_;
+    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFields(unknownFields);
+      return super.setUnknownFieldsProto3(unknownFields);
     }
 
     @java.lang.Override

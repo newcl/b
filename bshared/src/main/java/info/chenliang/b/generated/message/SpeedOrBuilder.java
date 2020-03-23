@@ -3,8 +3,8 @@
 
 package info.chenliang.b.generated.message;
 
-public interface PositionOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:Position)
+public interface SpeedOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:Speed)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -16,4 +16,9 @@ public interface PositionOrBuilder extends
    * <code>float y = 2;</code>
    */
   float getY();
+
+  /**
+   * <code>float rot = 3;</code>
+   */
+  float getRot();
 }

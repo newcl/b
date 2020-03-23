@@ -4,18 +4,19 @@
 package info.chenliang.b.generated.message;
 
 /**
- * Protobuf type {@code MoveToPosition}
+ * Protobuf type {@code State}
  */
-public  final class MoveToPosition extends
+public  final class State extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:MoveToPosition)
-    MoveToPositionOrBuilder {
+    // @@protoc_insertion_point(message_implements:State)
+    StateOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use MoveToPosition.newBuilder() to construct.
-  private MoveToPosition(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use State.newBuilder() to construct.
+  private State(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private MoveToPosition() {
+  private State() {
+    id_ = "";
   }
 
   @java.lang.Override
@@ -23,7 +24,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private MoveToPosition(
+  private State(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -43,6 +44,12 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            id_ = s;
+            break;
+          }
+          case 18: {
             info.chenliang.b.generated.message.Position.Builder subBuilder = null;
             if (position_ != null) {
               subBuilder = position_.toBuilder();
@@ -51,6 +58,19 @@ private static final long serialVersionUID = 0L;
             if (subBuilder != null) {
               subBuilder.mergeFrom(position_);
               position_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
+          case 26: {
+            info.chenliang.b.generated.message.Speed.Builder subBuilder = null;
+            if (speed_ != null) {
+              subBuilder = speed_.toBuilder();
+            }
+            speed_ = input.readMessage(info.chenliang.b.generated.message.Speed.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(speed_);
+              speed_ = subBuilder.buildPartial();
             }
 
             break;
@@ -76,36 +96,91 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return info.chenliang.b.generated.message.B.internal_static_MoveToPosition_descriptor;
+    return info.chenliang.b.generated.message.B.internal_static_State_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return info.chenliang.b.generated.message.B.internal_static_MoveToPosition_fieldAccessorTable
+    return info.chenliang.b.generated.message.B.internal_static_State_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            info.chenliang.b.generated.message.MoveToPosition.class, info.chenliang.b.generated.message.MoveToPosition.Builder.class);
+            info.chenliang.b.generated.message.State.class, info.chenliang.b.generated.message.State.Builder.class);
   }
 
-  public static final int POSITION_FIELD_NUMBER = 1;
+  public static final int ID_FIELD_NUMBER = 1;
+  private volatile java.lang.Object id_;
+  /**
+   * <code>string id = 1;</code>
+   */
+  public java.lang.String getId() {
+    java.lang.Object ref = id_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      id_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string id = 1;</code>
+   */
+  public com.google.protobuf.ByteString
+      getIdBytes() {
+    java.lang.Object ref = id_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      id_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int POSITION_FIELD_NUMBER = 2;
   private info.chenliang.b.generated.message.Position position_;
   /**
-   * <code>.Position position = 1;</code>
+   * <code>.Position position = 2;</code>
    */
   public boolean hasPosition() {
     return position_ != null;
   }
   /**
-   * <code>.Position position = 1;</code>
+   * <code>.Position position = 2;</code>
    */
   public info.chenliang.b.generated.message.Position getPosition() {
     return position_ == null ? info.chenliang.b.generated.message.Position.getDefaultInstance() : position_;
   }
   /**
-   * <code>.Position position = 1;</code>
+   * <code>.Position position = 2;</code>
    */
   public info.chenliang.b.generated.message.PositionOrBuilder getPositionOrBuilder() {
     return getPosition();
+  }
+
+  public static final int SPEED_FIELD_NUMBER = 3;
+  private info.chenliang.b.generated.message.Speed speed_;
+  /**
+   * <code>.Speed speed = 3;</code>
+   */
+  public boolean hasSpeed() {
+    return speed_ != null;
+  }
+  /**
+   * <code>.Speed speed = 3;</code>
+   */
+  public info.chenliang.b.generated.message.Speed getSpeed() {
+    return speed_ == null ? info.chenliang.b.generated.message.Speed.getDefaultInstance() : speed_;
+  }
+  /**
+   * <code>.Speed speed = 3;</code>
+   */
+  public info.chenliang.b.generated.message.SpeedOrBuilder getSpeedOrBuilder() {
+    return getSpeed();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -122,8 +197,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (!getIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+    }
     if (position_ != null) {
-      output.writeMessage(1, getPosition());
+      output.writeMessage(2, getPosition());
+    }
+    if (speed_ != null) {
+      output.writeMessage(3, getSpeed());
     }
     unknownFields.writeTo(output);
   }
@@ -134,9 +215,16 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (!getIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+    }
     if (position_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getPosition());
+        .computeMessageSize(2, getPosition());
+    }
+    if (speed_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(3, getSpeed());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -148,16 +236,23 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof info.chenliang.b.generated.message.MoveToPosition)) {
+    if (!(obj instanceof info.chenliang.b.generated.message.State)) {
       return super.equals(obj);
     }
-    info.chenliang.b.generated.message.MoveToPosition other = (info.chenliang.b.generated.message.MoveToPosition) obj;
+    info.chenliang.b.generated.message.State other = (info.chenliang.b.generated.message.State) obj;
 
     boolean result = true;
+    result = result && getId()
+        .equals(other.getId());
     result = result && (hasPosition() == other.hasPosition());
     if (hasPosition()) {
       result = result && getPosition()
           .equals(other.getPosition());
+    }
+    result = result && (hasSpeed() == other.hasSpeed());
+    if (hasSpeed()) {
+      result = result && getSpeed()
+          .equals(other.getSpeed());
     }
     result = result && unknownFields.equals(other.unknownFields);
     return result;
@@ -170,78 +265,84 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + ID_FIELD_NUMBER;
+    hash = (53 * hash) + getId().hashCode();
     if (hasPosition()) {
       hash = (37 * hash) + POSITION_FIELD_NUMBER;
       hash = (53 * hash) + getPosition().hashCode();
+    }
+    if (hasSpeed()) {
+      hash = (37 * hash) + SPEED_FIELD_NUMBER;
+      hash = (53 * hash) + getSpeed().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.State parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.State parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.State parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.State parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(byte[] data)
+  public static info.chenliang.b.generated.message.State parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.State parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(java.io.InputStream input)
+  public static info.chenliang.b.generated.message.State parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.State parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseDelimitedFrom(java.io.InputStream input)
+  public static info.chenliang.b.generated.message.State parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseDelimitedFrom(
+  public static info.chenliang.b.generated.message.State parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.State parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.State parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -254,7 +355,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(info.chenliang.b.generated.message.MoveToPosition prototype) {
+  public static Builder newBuilder(info.chenliang.b.generated.message.State prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -270,26 +371,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code MoveToPosition}
+   * Protobuf type {@code State}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:MoveToPosition)
-      info.chenliang.b.generated.message.MoveToPositionOrBuilder {
+      // @@protoc_insertion_point(builder_implements:State)
+      info.chenliang.b.generated.message.StateOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return info.chenliang.b.generated.message.B.internal_static_MoveToPosition_descriptor;
+      return info.chenliang.b.generated.message.B.internal_static_State_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return info.chenliang.b.generated.message.B.internal_static_MoveToPosition_fieldAccessorTable
+      return info.chenliang.b.generated.message.B.internal_static_State_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              info.chenliang.b.generated.message.MoveToPosition.class, info.chenliang.b.generated.message.MoveToPosition.Builder.class);
+              info.chenliang.b.generated.message.State.class, info.chenliang.b.generated.message.State.Builder.class);
     }
 
-    // Construct using info.chenliang.b.generated.message.MoveToPosition.newBuilder()
+    // Construct using info.chenliang.b.generated.message.State.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -307,11 +408,19 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      id_ = "";
+
       if (positionBuilder_ == null) {
         position_ = null;
       } else {
         position_ = null;
         positionBuilder_ = null;
+      }
+      if (speedBuilder_ == null) {
+        speed_ = null;
+      } else {
+        speed_ = null;
+        speedBuilder_ = null;
       }
       return this;
     }
@@ -319,17 +428,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return info.chenliang.b.generated.message.B.internal_static_MoveToPosition_descriptor;
+      return info.chenliang.b.generated.message.B.internal_static_State_descriptor;
     }
 
     @java.lang.Override
-    public info.chenliang.b.generated.message.MoveToPosition getDefaultInstanceForType() {
-      return info.chenliang.b.generated.message.MoveToPosition.getDefaultInstance();
+    public info.chenliang.b.generated.message.State getDefaultInstanceForType() {
+      return info.chenliang.b.generated.message.State.getDefaultInstance();
     }
 
     @java.lang.Override
-    public info.chenliang.b.generated.message.MoveToPosition build() {
-      info.chenliang.b.generated.message.MoveToPosition result = buildPartial();
+    public info.chenliang.b.generated.message.State build() {
+      info.chenliang.b.generated.message.State result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -337,12 +446,18 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public info.chenliang.b.generated.message.MoveToPosition buildPartial() {
-      info.chenliang.b.generated.message.MoveToPosition result = new info.chenliang.b.generated.message.MoveToPosition(this);
+    public info.chenliang.b.generated.message.State buildPartial() {
+      info.chenliang.b.generated.message.State result = new info.chenliang.b.generated.message.State(this);
+      result.id_ = id_;
       if (positionBuilder_ == null) {
         result.position_ = position_;
       } else {
         result.position_ = positionBuilder_.build();
+      }
+      if (speedBuilder_ == null) {
+        result.speed_ = speed_;
+      } else {
+        result.speed_ = speedBuilder_.build();
       }
       onBuilt();
       return result;
@@ -382,18 +497,25 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof info.chenliang.b.generated.message.MoveToPosition) {
-        return mergeFrom((info.chenliang.b.generated.message.MoveToPosition)other);
+      if (other instanceof info.chenliang.b.generated.message.State) {
+        return mergeFrom((info.chenliang.b.generated.message.State)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(info.chenliang.b.generated.message.MoveToPosition other) {
-      if (other == info.chenliang.b.generated.message.MoveToPosition.getDefaultInstance()) return this;
+    public Builder mergeFrom(info.chenliang.b.generated.message.State other) {
+      if (other == info.chenliang.b.generated.message.State.getDefaultInstance()) return this;
+      if (!other.getId().isEmpty()) {
+        id_ = other.id_;
+        onChanged();
+      }
       if (other.hasPosition()) {
         mergePosition(other.getPosition());
+      }
+      if (other.hasSpeed()) {
+        mergeSpeed(other.getSpeed());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -410,11 +532,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      info.chenliang.b.generated.message.MoveToPosition parsedMessage = null;
+      info.chenliang.b.generated.message.State parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (info.chenliang.b.generated.message.MoveToPosition) e.getUnfinishedMessage();
+        parsedMessage = (info.chenliang.b.generated.message.State) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -424,17 +546,86 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private java.lang.Object id_ = "";
+    /**
+     * <code>string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string id = 1;</code>
+     */
+    public Builder setId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      id_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string id = 1;</code>
+     */
+    public Builder clearId() {
+      
+      id_ = getDefaultInstance().getId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string id = 1;</code>
+     */
+    public Builder setIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      id_ = value;
+      onChanged();
+      return this;
+    }
+
     private info.chenliang.b.generated.message.Position position_ = null;
     private com.google.protobuf.SingleFieldBuilderV3<
         info.chenliang.b.generated.message.Position, info.chenliang.b.generated.message.Position.Builder, info.chenliang.b.generated.message.PositionOrBuilder> positionBuilder_;
     /**
-     * <code>.Position position = 1;</code>
+     * <code>.Position position = 2;</code>
      */
     public boolean hasPosition() {
       return positionBuilder_ != null || position_ != null;
     }
     /**
-     * <code>.Position position = 1;</code>
+     * <code>.Position position = 2;</code>
      */
     public info.chenliang.b.generated.message.Position getPosition() {
       if (positionBuilder_ == null) {
@@ -444,7 +635,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.Position position = 1;</code>
+     * <code>.Position position = 2;</code>
      */
     public Builder setPosition(info.chenliang.b.generated.message.Position value) {
       if (positionBuilder_ == null) {
@@ -460,7 +651,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Position position = 1;</code>
+     * <code>.Position position = 2;</code>
      */
     public Builder setPosition(
         info.chenliang.b.generated.message.Position.Builder builderForValue) {
@@ -474,7 +665,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Position position = 1;</code>
+     * <code>.Position position = 2;</code>
      */
     public Builder mergePosition(info.chenliang.b.generated.message.Position value) {
       if (positionBuilder_ == null) {
@@ -492,7 +683,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Position position = 1;</code>
+     * <code>.Position position = 2;</code>
      */
     public Builder clearPosition() {
       if (positionBuilder_ == null) {
@@ -506,7 +697,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Position position = 1;</code>
+     * <code>.Position position = 2;</code>
      */
     public info.chenliang.b.generated.message.Position.Builder getPositionBuilder() {
       
@@ -514,7 +705,7 @@ private static final long serialVersionUID = 0L;
       return getPositionFieldBuilder().getBuilder();
     }
     /**
-     * <code>.Position position = 1;</code>
+     * <code>.Position position = 2;</code>
      */
     public info.chenliang.b.generated.message.PositionOrBuilder getPositionOrBuilder() {
       if (positionBuilder_ != null) {
@@ -525,7 +716,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.Position position = 1;</code>
+     * <code>.Position position = 2;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         info.chenliang.b.generated.message.Position, info.chenliang.b.generated.message.Position.Builder, info.chenliang.b.generated.message.PositionOrBuilder> 
@@ -540,6 +731,123 @@ private static final long serialVersionUID = 0L;
       }
       return positionBuilder_;
     }
+
+    private info.chenliang.b.generated.message.Speed speed_ = null;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        info.chenliang.b.generated.message.Speed, info.chenliang.b.generated.message.Speed.Builder, info.chenliang.b.generated.message.SpeedOrBuilder> speedBuilder_;
+    /**
+     * <code>.Speed speed = 3;</code>
+     */
+    public boolean hasSpeed() {
+      return speedBuilder_ != null || speed_ != null;
+    }
+    /**
+     * <code>.Speed speed = 3;</code>
+     */
+    public info.chenliang.b.generated.message.Speed getSpeed() {
+      if (speedBuilder_ == null) {
+        return speed_ == null ? info.chenliang.b.generated.message.Speed.getDefaultInstance() : speed_;
+      } else {
+        return speedBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.Speed speed = 3;</code>
+     */
+    public Builder setSpeed(info.chenliang.b.generated.message.Speed value) {
+      if (speedBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        speed_ = value;
+        onChanged();
+      } else {
+        speedBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Speed speed = 3;</code>
+     */
+    public Builder setSpeed(
+        info.chenliang.b.generated.message.Speed.Builder builderForValue) {
+      if (speedBuilder_ == null) {
+        speed_ = builderForValue.build();
+        onChanged();
+      } else {
+        speedBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Speed speed = 3;</code>
+     */
+    public Builder mergeSpeed(info.chenliang.b.generated.message.Speed value) {
+      if (speedBuilder_ == null) {
+        if (speed_ != null) {
+          speed_ =
+            info.chenliang.b.generated.message.Speed.newBuilder(speed_).mergeFrom(value).buildPartial();
+        } else {
+          speed_ = value;
+        }
+        onChanged();
+      } else {
+        speedBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Speed speed = 3;</code>
+     */
+    public Builder clearSpeed() {
+      if (speedBuilder_ == null) {
+        speed_ = null;
+        onChanged();
+      } else {
+        speed_ = null;
+        speedBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Speed speed = 3;</code>
+     */
+    public info.chenliang.b.generated.message.Speed.Builder getSpeedBuilder() {
+      
+      onChanged();
+      return getSpeedFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.Speed speed = 3;</code>
+     */
+    public info.chenliang.b.generated.message.SpeedOrBuilder getSpeedOrBuilder() {
+      if (speedBuilder_ != null) {
+        return speedBuilder_.getMessageOrBuilder();
+      } else {
+        return speed_ == null ?
+            info.chenliang.b.generated.message.Speed.getDefaultInstance() : speed_;
+      }
+    }
+    /**
+     * <code>.Speed speed = 3;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        info.chenliang.b.generated.message.Speed, info.chenliang.b.generated.message.Speed.Builder, info.chenliang.b.generated.message.SpeedOrBuilder> 
+        getSpeedFieldBuilder() {
+      if (speedBuilder_ == null) {
+        speedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            info.chenliang.b.generated.message.Speed, info.chenliang.b.generated.message.Speed.Builder, info.chenliang.b.generated.message.SpeedOrBuilder>(
+                getSpeed(),
+                getParentForChildren(),
+                isClean());
+        speed_ = null;
+      }
+      return speedBuilder_;
+    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -553,41 +861,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:MoveToPosition)
+    // @@protoc_insertion_point(builder_scope:State)
   }
 
-  // @@protoc_insertion_point(class_scope:MoveToPosition)
-  private static final info.chenliang.b.generated.message.MoveToPosition DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:State)
+  private static final info.chenliang.b.generated.message.State DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new info.chenliang.b.generated.message.MoveToPosition();
+    DEFAULT_INSTANCE = new info.chenliang.b.generated.message.State();
   }
 
-  public static info.chenliang.b.generated.message.MoveToPosition getDefaultInstance() {
+  public static info.chenliang.b.generated.message.State getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<MoveToPosition>
-      PARSER = new com.google.protobuf.AbstractParser<MoveToPosition>() {
+  private static final com.google.protobuf.Parser<State>
+      PARSER = new com.google.protobuf.AbstractParser<State>() {
     @java.lang.Override
-    public MoveToPosition parsePartialFrom(
+    public State parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new MoveToPosition(input, extensionRegistry);
+      return new State(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<MoveToPosition> parser() {
+  public static com.google.protobuf.Parser<State> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<MoveToPosition> getParserForType() {
+  public com.google.protobuf.Parser<State> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public info.chenliang.b.generated.message.MoveToPosition getDefaultInstanceForType() {
+  public info.chenliang.b.generated.message.State getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

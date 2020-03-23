@@ -21,13 +21,9 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Handshake() {
-  }
-
-  @java.lang.Override
-  @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
-    return new Handshake();
+    subPort_ = 0;
+    subStreamId_ = 0;
+    id_ = "";
   }
 
   @java.lang.Override
@@ -43,6 +39,7 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
+    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -63,8 +60,14 @@ private static final long serialVersionUID = 0L;
             subStreamId_ = input.readInt32();
             break;
           }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            id_ = s;
+            break;
+          }
           default: {
-            if (!parseUnknownField(
+            if (!parseUnknownFieldProto3(
                 input, unknownFields, extensionRegistry, tag)) {
               done = true;
             }
@@ -99,7 +102,6 @@ private static final long serialVersionUID = 0L;
   private int subPort_;
   /**
    * <code>int32 subPort = 1;</code>
-   * @return The subPort.
    */
   public int getSubPort() {
     return subPort_;
@@ -109,10 +111,43 @@ private static final long serialVersionUID = 0L;
   private int subStreamId_;
   /**
    * <code>int32 subStreamId = 2;</code>
-   * @return The subStreamId.
    */
   public int getSubStreamId() {
     return subStreamId_;
+  }
+
+  public static final int ID_FIELD_NUMBER = 3;
+  private volatile java.lang.Object id_;
+  /**
+   * <code>string id = 3;</code>
+   */
+  public java.lang.String getId() {
+    java.lang.Object ref = id_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      id_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string id = 3;</code>
+   */
+  public com.google.protobuf.ByteString
+      getIdBytes() {
+    java.lang.Object ref = id_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      id_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -135,6 +170,9 @@ private static final long serialVersionUID = 0L;
     if (subStreamId_ != 0) {
       output.writeInt32(2, subStreamId_);
     }
+    if (!getIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, id_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -152,6 +190,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(2, subStreamId_);
     }
+    if (!getIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, id_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -167,12 +208,15 @@ private static final long serialVersionUID = 0L;
     }
     info.chenliang.b.generated.message.Handshake other = (info.chenliang.b.generated.message.Handshake) obj;
 
-    if (getSubPort()
-        != other.getSubPort()) return false;
-    if (getSubStreamId()
-        != other.getSubStreamId()) return false;
-    if (!unknownFields.equals(other.unknownFields)) return false;
-    return true;
+    boolean result = true;
+    result = result && (getSubPort()
+        == other.getSubPort());
+    result = result && (getSubStreamId()
+        == other.getSubStreamId());
+    result = result && getId()
+        .equals(other.getId());
+    result = result && unknownFields.equals(other.unknownFields);
+    return result;
   }
 
   @java.lang.Override
@@ -186,6 +230,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getSubPort();
     hash = (37 * hash) + SUBSTREAMID_FIELD_NUMBER;
     hash = (53 * hash) + getSubStreamId();
+    hash = (37 * hash) + ID_FIELD_NUMBER;
+    hash = (53 * hash) + getId().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -328,6 +374,8 @@ private static final long serialVersionUID = 0L;
 
       subStreamId_ = 0;
 
+      id_ = "";
+
       return this;
     }
 
@@ -356,41 +404,42 @@ private static final long serialVersionUID = 0L;
       info.chenliang.b.generated.message.Handshake result = new info.chenliang.b.generated.message.Handshake(this);
       result.subPort_ = subPort_;
       result.subStreamId_ = subStreamId_;
+      result.id_ = id_;
       onBuilt();
       return result;
     }
 
     @java.lang.Override
     public Builder clone() {
-      return super.clone();
+      return (Builder) super.clone();
     }
     @java.lang.Override
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return super.setField(field, value);
+      return (Builder) super.setField(field, value);
     }
     @java.lang.Override
     public Builder clearField(
         com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return super.clearField(field);
+      return (Builder) super.clearField(field);
     }
     @java.lang.Override
     public Builder clearOneof(
         com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return super.clearOneof(oneof);
+      return (Builder) super.clearOneof(oneof);
     }
     @java.lang.Override
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         int index, java.lang.Object value) {
-      return super.setRepeatedField(field, index, value);
+      return (Builder) super.setRepeatedField(field, index, value);
     }
     @java.lang.Override
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return super.addRepeatedField(field, value);
+      return (Builder) super.addRepeatedField(field, value);
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -409,6 +458,10 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getSubStreamId() != 0) {
         setSubStreamId(other.getSubStreamId());
+      }
+      if (!other.getId().isEmpty()) {
+        id_ = other.id_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -442,15 +495,12 @@ private static final long serialVersionUID = 0L;
     private int subPort_ ;
     /**
      * <code>int32 subPort = 1;</code>
-     * @return The subPort.
      */
     public int getSubPort() {
       return subPort_;
     }
     /**
      * <code>int32 subPort = 1;</code>
-     * @param value The subPort to set.
-     * @return This builder for chaining.
      */
     public Builder setSubPort(int value) {
       
@@ -460,7 +510,6 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>int32 subPort = 1;</code>
-     * @return This builder for chaining.
      */
     public Builder clearSubPort() {
       
@@ -472,15 +521,12 @@ private static final long serialVersionUID = 0L;
     private int subStreamId_ ;
     /**
      * <code>int32 subStreamId = 2;</code>
-     * @return The subStreamId.
      */
     public int getSubStreamId() {
       return subStreamId_;
     }
     /**
      * <code>int32 subStreamId = 2;</code>
-     * @param value The subStreamId to set.
-     * @return This builder for chaining.
      */
     public Builder setSubStreamId(int value) {
       
@@ -490,7 +536,6 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>int32 subStreamId = 2;</code>
-     * @return This builder for chaining.
      */
     public Builder clearSubStreamId() {
       
@@ -498,10 +543,79 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
+    private java.lang.Object id_ = "";
+    /**
+     * <code>string id = 3;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string id = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string id = 3;</code>
+     */
+    public Builder setId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      id_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string id = 3;</code>
+     */
+    public Builder clearId() {
+      
+      id_ = getDefaultInstance().getId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string id = 3;</code>
+     */
+    public Builder setIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      id_ = value;
+      onChanged();
+      return this;
+    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFields(unknownFields);
+      return super.setUnknownFieldsProto3(unknownFields);
     }
 
     @java.lang.Override

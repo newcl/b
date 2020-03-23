@@ -4,18 +4,21 @@
 package info.chenliang.b.generated.message;
 
 /**
- * Protobuf type {@code MoveToPosition}
+ * Protobuf type {@code Speed}
  */
-public  final class MoveToPosition extends
+public  final class Speed extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:MoveToPosition)
-    MoveToPositionOrBuilder {
+    // @@protoc_insertion_point(message_implements:Speed)
+    SpeedOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use MoveToPosition.newBuilder() to construct.
-  private MoveToPosition(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use Speed.newBuilder() to construct.
+  private Speed(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private MoveToPosition() {
+  private Speed() {
+    x_ = 0F;
+    y_ = 0F;
+    rot_ = 0F;
   }
 
   @java.lang.Override
@@ -23,7 +26,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private MoveToPosition(
+  private Speed(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -42,17 +45,19 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            info.chenliang.b.generated.message.Position.Builder subBuilder = null;
-            if (position_ != null) {
-              subBuilder = position_.toBuilder();
-            }
-            position_ = input.readMessage(info.chenliang.b.generated.message.Position.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(position_);
-              position_ = subBuilder.buildPartial();
-            }
+          case 13: {
 
+            x_ = input.readFloat();
+            break;
+          }
+          case 21: {
+
+            y_ = input.readFloat();
+            break;
+          }
+          case 29: {
+
+            rot_ = input.readFloat();
             break;
           }
           default: {
@@ -76,36 +81,42 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return info.chenliang.b.generated.message.B.internal_static_MoveToPosition_descriptor;
+    return info.chenliang.b.generated.message.B.internal_static_Speed_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return info.chenliang.b.generated.message.B.internal_static_MoveToPosition_fieldAccessorTable
+    return info.chenliang.b.generated.message.B.internal_static_Speed_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            info.chenliang.b.generated.message.MoveToPosition.class, info.chenliang.b.generated.message.MoveToPosition.Builder.class);
+            info.chenliang.b.generated.message.Speed.class, info.chenliang.b.generated.message.Speed.Builder.class);
   }
 
-  public static final int POSITION_FIELD_NUMBER = 1;
-  private info.chenliang.b.generated.message.Position position_;
+  public static final int X_FIELD_NUMBER = 1;
+  private float x_;
   /**
-   * <code>.Position position = 1;</code>
+   * <code>float x = 1;</code>
    */
-  public boolean hasPosition() {
-    return position_ != null;
+  public float getX() {
+    return x_;
   }
+
+  public static final int Y_FIELD_NUMBER = 2;
+  private float y_;
   /**
-   * <code>.Position position = 1;</code>
+   * <code>float y = 2;</code>
    */
-  public info.chenliang.b.generated.message.Position getPosition() {
-    return position_ == null ? info.chenliang.b.generated.message.Position.getDefaultInstance() : position_;
+  public float getY() {
+    return y_;
   }
+
+  public static final int ROT_FIELD_NUMBER = 3;
+  private float rot_;
   /**
-   * <code>.Position position = 1;</code>
+   * <code>float rot = 3;</code>
    */
-  public info.chenliang.b.generated.message.PositionOrBuilder getPositionOrBuilder() {
-    return getPosition();
+  public float getRot() {
+    return rot_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -122,8 +133,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (position_ != null) {
-      output.writeMessage(1, getPosition());
+    if (x_ != 0F) {
+      output.writeFloat(1, x_);
+    }
+    if (y_ != 0F) {
+      output.writeFloat(2, y_);
+    }
+    if (rot_ != 0F) {
+      output.writeFloat(3, rot_);
     }
     unknownFields.writeTo(output);
   }
@@ -134,9 +151,17 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (position_ != null) {
+    if (x_ != 0F) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getPosition());
+        .computeFloatSize(1, x_);
+    }
+    if (y_ != 0F) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeFloatSize(2, y_);
+    }
+    if (rot_ != 0F) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeFloatSize(3, rot_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -148,17 +173,24 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof info.chenliang.b.generated.message.MoveToPosition)) {
+    if (!(obj instanceof info.chenliang.b.generated.message.Speed)) {
       return super.equals(obj);
     }
-    info.chenliang.b.generated.message.MoveToPosition other = (info.chenliang.b.generated.message.MoveToPosition) obj;
+    info.chenliang.b.generated.message.Speed other = (info.chenliang.b.generated.message.Speed) obj;
 
     boolean result = true;
-    result = result && (hasPosition() == other.hasPosition());
-    if (hasPosition()) {
-      result = result && getPosition()
-          .equals(other.getPosition());
-    }
+    result = result && (
+        java.lang.Float.floatToIntBits(getX())
+        == java.lang.Float.floatToIntBits(
+            other.getX()));
+    result = result && (
+        java.lang.Float.floatToIntBits(getY())
+        == java.lang.Float.floatToIntBits(
+            other.getY()));
+    result = result && (
+        java.lang.Float.floatToIntBits(getRot())
+        == java.lang.Float.floatToIntBits(
+            other.getRot()));
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -170,78 +202,83 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasPosition()) {
-      hash = (37 * hash) + POSITION_FIELD_NUMBER;
-      hash = (53 * hash) + getPosition().hashCode();
-    }
+    hash = (37 * hash) + X_FIELD_NUMBER;
+    hash = (53 * hash) + java.lang.Float.floatToIntBits(
+        getX());
+    hash = (37 * hash) + Y_FIELD_NUMBER;
+    hash = (53 * hash) + java.lang.Float.floatToIntBits(
+        getY());
+    hash = (37 * hash) + ROT_FIELD_NUMBER;
+    hash = (53 * hash) + java.lang.Float.floatToIntBits(
+        getRot());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.Speed parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.Speed parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.Speed parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.Speed parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(byte[] data)
+  public static info.chenliang.b.generated.message.Speed parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.Speed parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(java.io.InputStream input)
+  public static info.chenliang.b.generated.message.Speed parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.Speed parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseDelimitedFrom(java.io.InputStream input)
+  public static info.chenliang.b.generated.message.Speed parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseDelimitedFrom(
+  public static info.chenliang.b.generated.message.Speed parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.Speed parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static info.chenliang.b.generated.message.MoveToPosition parseFrom(
+  public static info.chenliang.b.generated.message.Speed parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -254,7 +291,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(info.chenliang.b.generated.message.MoveToPosition prototype) {
+  public static Builder newBuilder(info.chenliang.b.generated.message.Speed prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -270,26 +307,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code MoveToPosition}
+   * Protobuf type {@code Speed}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:MoveToPosition)
-      info.chenliang.b.generated.message.MoveToPositionOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Speed)
+      info.chenliang.b.generated.message.SpeedOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return info.chenliang.b.generated.message.B.internal_static_MoveToPosition_descriptor;
+      return info.chenliang.b.generated.message.B.internal_static_Speed_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return info.chenliang.b.generated.message.B.internal_static_MoveToPosition_fieldAccessorTable
+      return info.chenliang.b.generated.message.B.internal_static_Speed_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              info.chenliang.b.generated.message.MoveToPosition.class, info.chenliang.b.generated.message.MoveToPosition.Builder.class);
+              info.chenliang.b.generated.message.Speed.class, info.chenliang.b.generated.message.Speed.Builder.class);
     }
 
-    // Construct using info.chenliang.b.generated.message.MoveToPosition.newBuilder()
+    // Construct using info.chenliang.b.generated.message.Speed.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -307,29 +344,29 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (positionBuilder_ == null) {
-        position_ = null;
-      } else {
-        position_ = null;
-        positionBuilder_ = null;
-      }
+      x_ = 0F;
+
+      y_ = 0F;
+
+      rot_ = 0F;
+
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return info.chenliang.b.generated.message.B.internal_static_MoveToPosition_descriptor;
+      return info.chenliang.b.generated.message.B.internal_static_Speed_descriptor;
     }
 
     @java.lang.Override
-    public info.chenliang.b.generated.message.MoveToPosition getDefaultInstanceForType() {
-      return info.chenliang.b.generated.message.MoveToPosition.getDefaultInstance();
+    public info.chenliang.b.generated.message.Speed getDefaultInstanceForType() {
+      return info.chenliang.b.generated.message.Speed.getDefaultInstance();
     }
 
     @java.lang.Override
-    public info.chenliang.b.generated.message.MoveToPosition build() {
-      info.chenliang.b.generated.message.MoveToPosition result = buildPartial();
+    public info.chenliang.b.generated.message.Speed build() {
+      info.chenliang.b.generated.message.Speed result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -337,13 +374,11 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public info.chenliang.b.generated.message.MoveToPosition buildPartial() {
-      info.chenliang.b.generated.message.MoveToPosition result = new info.chenliang.b.generated.message.MoveToPosition(this);
-      if (positionBuilder_ == null) {
-        result.position_ = position_;
-      } else {
-        result.position_ = positionBuilder_.build();
-      }
+    public info.chenliang.b.generated.message.Speed buildPartial() {
+      info.chenliang.b.generated.message.Speed result = new info.chenliang.b.generated.message.Speed(this);
+      result.x_ = x_;
+      result.y_ = y_;
+      result.rot_ = rot_;
       onBuilt();
       return result;
     }
@@ -382,18 +417,24 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof info.chenliang.b.generated.message.MoveToPosition) {
-        return mergeFrom((info.chenliang.b.generated.message.MoveToPosition)other);
+      if (other instanceof info.chenliang.b.generated.message.Speed) {
+        return mergeFrom((info.chenliang.b.generated.message.Speed)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(info.chenliang.b.generated.message.MoveToPosition other) {
-      if (other == info.chenliang.b.generated.message.MoveToPosition.getDefaultInstance()) return this;
-      if (other.hasPosition()) {
-        mergePosition(other.getPosition());
+    public Builder mergeFrom(info.chenliang.b.generated.message.Speed other) {
+      if (other == info.chenliang.b.generated.message.Speed.getDefaultInstance()) return this;
+      if (other.getX() != 0F) {
+        setX(other.getX());
+      }
+      if (other.getY() != 0F) {
+        setY(other.getY());
+      }
+      if (other.getRot() != 0F) {
+        setRot(other.getRot());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -410,11 +451,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      info.chenliang.b.generated.message.MoveToPosition parsedMessage = null;
+      info.chenliang.b.generated.message.Speed parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (info.chenliang.b.generated.message.MoveToPosition) e.getUnfinishedMessage();
+        parsedMessage = (info.chenliang.b.generated.message.Speed) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -424,121 +465,82 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private info.chenliang.b.generated.message.Position position_ = null;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        info.chenliang.b.generated.message.Position, info.chenliang.b.generated.message.Position.Builder, info.chenliang.b.generated.message.PositionOrBuilder> positionBuilder_;
+    private float x_ ;
     /**
-     * <code>.Position position = 1;</code>
+     * <code>float x = 1;</code>
      */
-    public boolean hasPosition() {
-      return positionBuilder_ != null || position_ != null;
+    public float getX() {
+      return x_;
     }
     /**
-     * <code>.Position position = 1;</code>
+     * <code>float x = 1;</code>
      */
-    public info.chenliang.b.generated.message.Position getPosition() {
-      if (positionBuilder_ == null) {
-        return position_ == null ? info.chenliang.b.generated.message.Position.getDefaultInstance() : position_;
-      } else {
-        return positionBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.Position position = 1;</code>
-     */
-    public Builder setPosition(info.chenliang.b.generated.message.Position value) {
-      if (positionBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        position_ = value;
-        onChanged();
-      } else {
-        positionBuilder_.setMessage(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Position position = 1;</code>
-     */
-    public Builder setPosition(
-        info.chenliang.b.generated.message.Position.Builder builderForValue) {
-      if (positionBuilder_ == null) {
-        position_ = builderForValue.build();
-        onChanged();
-      } else {
-        positionBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Position position = 1;</code>
-     */
-    public Builder mergePosition(info.chenliang.b.generated.message.Position value) {
-      if (positionBuilder_ == null) {
-        if (position_ != null) {
-          position_ =
-            info.chenliang.b.generated.message.Position.newBuilder(position_).mergeFrom(value).buildPartial();
-        } else {
-          position_ = value;
-        }
-        onChanged();
-      } else {
-        positionBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Position position = 1;</code>
-     */
-    public Builder clearPosition() {
-      if (positionBuilder_ == null) {
-        position_ = null;
-        onChanged();
-      } else {
-        position_ = null;
-        positionBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Position position = 1;</code>
-     */
-    public info.chenliang.b.generated.message.Position.Builder getPositionBuilder() {
+    public Builder setX(float value) {
       
+      x_ = value;
       onChanged();
-      return getPositionFieldBuilder().getBuilder();
+      return this;
     }
     /**
-     * <code>.Position position = 1;</code>
+     * <code>float x = 1;</code>
      */
-    public info.chenliang.b.generated.message.PositionOrBuilder getPositionOrBuilder() {
-      if (positionBuilder_ != null) {
-        return positionBuilder_.getMessageOrBuilder();
-      } else {
-        return position_ == null ?
-            info.chenliang.b.generated.message.Position.getDefaultInstance() : position_;
-      }
+    public Builder clearX() {
+      
+      x_ = 0F;
+      onChanged();
+      return this;
+    }
+
+    private float y_ ;
+    /**
+     * <code>float y = 2;</code>
+     */
+    public float getY() {
+      return y_;
     }
     /**
-     * <code>.Position position = 1;</code>
+     * <code>float y = 2;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        info.chenliang.b.generated.message.Position, info.chenliang.b.generated.message.Position.Builder, info.chenliang.b.generated.message.PositionOrBuilder> 
-        getPositionFieldBuilder() {
-      if (positionBuilder_ == null) {
-        positionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            info.chenliang.b.generated.message.Position, info.chenliang.b.generated.message.Position.Builder, info.chenliang.b.generated.message.PositionOrBuilder>(
-                getPosition(),
-                getParentForChildren(),
-                isClean());
-        position_ = null;
-      }
-      return positionBuilder_;
+    public Builder setY(float value) {
+      
+      y_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>float y = 2;</code>
+     */
+    public Builder clearY() {
+      
+      y_ = 0F;
+      onChanged();
+      return this;
+    }
+
+    private float rot_ ;
+    /**
+     * <code>float rot = 3;</code>
+     */
+    public float getRot() {
+      return rot_;
+    }
+    /**
+     * <code>float rot = 3;</code>
+     */
+    public Builder setRot(float value) {
+      
+      rot_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>float rot = 3;</code>
+     */
+    public Builder clearRot() {
+      
+      rot_ = 0F;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
@@ -553,41 +555,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:MoveToPosition)
+    // @@protoc_insertion_point(builder_scope:Speed)
   }
 
-  // @@protoc_insertion_point(class_scope:MoveToPosition)
-  private static final info.chenliang.b.generated.message.MoveToPosition DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Speed)
+  private static final info.chenliang.b.generated.message.Speed DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new info.chenliang.b.generated.message.MoveToPosition();
+    DEFAULT_INSTANCE = new info.chenliang.b.generated.message.Speed();
   }
 
-  public static info.chenliang.b.generated.message.MoveToPosition getDefaultInstance() {
+  public static info.chenliang.b.generated.message.Speed getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<MoveToPosition>
-      PARSER = new com.google.protobuf.AbstractParser<MoveToPosition>() {
+  private static final com.google.protobuf.Parser<Speed>
+      PARSER = new com.google.protobuf.AbstractParser<Speed>() {
     @java.lang.Override
-    public MoveToPosition parsePartialFrom(
+    public Speed parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new MoveToPosition(input, extensionRegistry);
+      return new Speed(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<MoveToPosition> parser() {
+  public static com.google.protobuf.Parser<Speed> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<MoveToPosition> getParserForType() {
+  public com.google.protobuf.Parser<Speed> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public info.chenliang.b.generated.message.MoveToPosition getDefaultInstanceForType() {
+  public info.chenliang.b.generated.message.Speed getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 
